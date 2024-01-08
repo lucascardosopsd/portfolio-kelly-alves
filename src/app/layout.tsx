@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
-      <body className={`bg-peach-100 dark:bg-zinc-800 ${poppins.className}`}>
+      <body className={`bg-beige ${poppins.className}`}>
         <Theme>{children}</Theme>
       </body>
     </html>

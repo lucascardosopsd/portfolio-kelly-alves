@@ -36,11 +36,11 @@ const Hero = ({ data }: HeroProps) => {
         {/* Left */}
         <div className="flex-1 tablet:w:2/3 mt-10 tablet:mt-0 space-y-4">
           <div className="flex flex-col gap-3 items-center tablet:items-start max-w-2xl text-center tablet:text-left">
-            <p className="px-4 py-2 bg-peach-500 dark:bg-zinc-800  text-grey-600 dark:text-zinc-100 w-max rounded">
+            <p className="px-4 py-2 bg-peach-500 text-grey-600 w-max rounded">
               {data?.greeting}
             </p>
-            <h1 className="text-grey dark:text-zinc-100">{data?.title}</h1>
-            <p className="text-grey-600 dark:text-zinc-300">{data?.subtitle}</p>
+            <h1 className="text-grey">{data?.title}</h1>
+            <p className="text-grey-600">{data?.subtitle}</p>
           </div>
 
           <div className="flex flex-col space-y-4">
@@ -51,7 +51,7 @@ const Hero = ({ data }: HeroProps) => {
 
             <Link
               href="/contact"
-              className="btn border hover:bg-zinc-100 hover:text-purple transition border-peach dark:border-zinc-600 dark:text-zinc-100"
+              className="btn border hover:bg-zinc-100 hover:text-purple transition border-peach"
             >
               <Phone />
               Fale Comigo
@@ -66,9 +66,7 @@ const Hero = ({ data }: HeroProps) => {
                   >
                     <link.icon strokeWidth={0} fill="currentColor" />
                   </a>
-                  <p className="text-zinc-800 dark:text-zinc-100">
-                    {link.label}
-                  </p>
+                  <p className="text-zinc-800">{link.label}</p>
                 </div>
               ))}
             </div>
@@ -76,7 +74,7 @@ const Hero = ({ data }: HeroProps) => {
         </div>
         {/* Right */}
         <div className="flex flex-1 h-full w-full items-center justify-center py-4 tablet:py-0">
-          <div className="relative h-[70vh] w-auto rounded-2xl border border-peach bg-zinc-50 dark dark:border-zinc-800 dark:bg-gradient-to-t dark:from-zinc-800 dark:to-zinc-900">
+          <div className="relative h-[70vh] w-auto rounded-2xl border border-peach bg-zinc-50">
             <Image
               src={data?.pic.asset.url}
               alt="Foto Desenvolvedor"

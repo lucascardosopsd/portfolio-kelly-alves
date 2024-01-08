@@ -16,7 +16,7 @@
 
 @layer base {
   section {
-    @apply min-h-[90vh] bg-gradient-to-t from-peach-100 to-gray-100 dark:from-zinc-800 dark:to-zinc-900;
+    @apply min-h-[90vh] bg-gradient-to-t from-peach-100 to-gray-100;
   }
   h1 {
     @apply text-5xl font-bold;
@@ -53,7 +53,7 @@
   }
 
   .box {
-    @apply bg-peach-200 dark:bg-zinc-900 p-8 tablet:p-12 rounded-lg border border-peach dark:border-zinc-700;
+    @apply bg-peach-20 p-8 tablet:p-12 rounded-lg border border-peach;
   }
 
   .btn {
@@ -66,6 +66,6 @@
 
   input,
   textarea {
-    @apply w-full rounded px-6 py-4 border border-peach-700 bg-peach-500 dark:border-zinc-700 dark:bg-zinc-900 outline-none text-sm text-grey-700;
+    @apply w-full rounded px-6 py-4 border border-peach-700 bg-peach-500 outline-none text-sm text-grey-700;
   }
 }
