@@ -1,0 +1,42 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/react-headroom": "^3.2.3",
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.299.0",
+    "next": "^14.0",
+    "next-themes": "^0.2.1",
+    "nextjs-current-url": "^1.0.3",
+    "react": "^18.2",
+    "react-dom": "^18",
+    "react-headroom": "^3.2.1",
+    "react-icons": "4.12.0",
+    "styled-components": "6",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@sanity/client": "^6.10.0",
+    "@sanity/icons": "^2.0",
+    "@sanity/image-url": "1",
+    "@sanity/types": "^3.19",
+    "@sanity/ui": "^2.0.0-beta",
+    "@sanity/vision": "3",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "next-sanity": "7",
+    "postcss": "^8",
+    "sanity": "3",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
