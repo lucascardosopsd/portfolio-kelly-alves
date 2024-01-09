@@ -34,7 +34,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           {serviceCategoriesData.slice(0, 4).map((category, index) => (
             <div
               key={index}
-              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center"
+              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center h-40"
             >
               <p className="font-semibold">{category.categoryName}</p>
 
@@ -53,7 +53,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           {serviceCategoriesData.slice(4).map((category, index) => (
             <div
               key={index}
-              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center"
+              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center h-40"
             >
               <p className="font-semibold">{category.categoryName}</p>
 
