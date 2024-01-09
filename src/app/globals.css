@@ -16,7 +16,7 @@
 
 @layer base {
   section {
-    @apply min-h-svh tablet:min-h-[calc(100svh-5rem)] overflow-hidden;
+    @apply min-h-svh tablet:min-h-[calc(100svh-5rem)] overflow-x-hidden;
   }
   h1 {
     @apply text-5xl font-bold;
@@ -61,7 +61,7 @@
   }
 
   .btn-primary {
-    @apply text-beige bg-beige-600;
+    @apply text-beige-900 bg-gradient-to-t from-beige-700 to-beige-600 font-medium hover:from-beige-800 hover:to-beige-700 border border-beige-600;
   }
 
   input,

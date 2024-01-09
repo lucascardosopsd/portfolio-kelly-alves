@@ -4,12 +4,14 @@ import { useRef } from "react";
 import FadeDiv from "@/components/FadeDiv";
 import { ServiceCategory } from "@/types/serviceCategory";
 import SectionHeading from "@/components/SectionHeading";
+import useShowServices from "@/context/showServices";
 
 export interface ServicesProps {
   serviceCategoriesData: ServiceCategory[];
 }
 
 const Services = ({ serviceCategoriesData }: ServicesProps) => {
+  const { toggle } = useShowServices();
   const ref = useRef(null);
   watchInView({ ref, id: "hero" });
 
@@ -47,7 +49,9 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           ))}
         </div>
 
-        <button className="btn btn-primary">Ver Detalhes</button>
+        <button className="btn btn-primary" onClick={toggle}>
+          Ver Detalhes
+        </button>
       </section>
     </FadeDiv>
   );
