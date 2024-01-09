@@ -9,10 +9,18 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Descrição Portfolio",
+  title: "Kelly Alves | Massoterapia e Estética",
+  description:
+    "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
   openGraph: {
-    images: "/images/dev.png",
+    images: [
+      {
+        url: "/images/open-graph.png",
+        width: 1200,
+        height: 630,
+        alt: "Imagem de capa para o seu portfolio",
+      },
+    ],
   },
 };
 
