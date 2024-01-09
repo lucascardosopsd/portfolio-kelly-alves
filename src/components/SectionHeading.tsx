@@ -14,7 +14,7 @@ const SectionHeading = ({
   return (
     <div className={`max-w-xl mx-auto mb-6 text-center ${classname}`}>
       <h2 className="text-beige-800 mb-2">{title}</h2>
-      <p className="text-beige-800">{subtitle}</p>
+      <p className="text-beige-700">{subtitle}</p>
     </div>
   );
 };
