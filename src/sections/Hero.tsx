@@ -72,7 +72,7 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
           <p className="text-6xl tablet:text-5xl font-semibold text-center tablet:text-end">
             {profileData.name}
           </p>
-          <p className="text-center tabet:text-end">{profileData.motto}</p>
+          <p className="text-center tablet:text-end">{profileData.motto}</p>
           <div className="flex gap-4">
             {heroData.highlights.map((highlight, index) => (
               <div
