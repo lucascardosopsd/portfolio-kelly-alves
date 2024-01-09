@@ -16,5 +16,11 @@ export const getServices = async () => {
   
   `;
 
-  return (await client.fetch(query)) as ServiceCategory[];
+  return (await client
+    .fetch(query)
+    .then((services: ServiceCategory[]) =>
+      services.sort(
+        (a, b) => a.categoryServices.length - b.categoryServices.length
+      )
+    )) as ServiceCategory[];
 };
