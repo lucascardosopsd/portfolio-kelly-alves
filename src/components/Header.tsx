@@ -2,8 +2,11 @@ import NavLink from "./CustomLink";
 import MobileMenu from "./MobileMenu";
 import { navLinks } from "../constants";
 import Headroom from "react-headroom";
+import { getProfile } from "@/services/getProfile";
 
-const Header = () => {
+const Header = async () => {
+  const profileData = await getProfile();
+
   return (
     <>
       <div className="flex w-full items-center">
@@ -22,7 +25,7 @@ const Header = () => {
         </Headroom>
       </div>
       <header className="w-full flex justify-end fixed z-50 top-2 right-2">
-        <MobileMenu />
+        <MobileMenu whatsappUrl={profileData.whatsappUrl} />
       </header>
     </>
   );

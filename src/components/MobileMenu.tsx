@@ -3,9 +3,9 @@ import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import NavLink from "./CustomLink";
-import { navLinks, socialLinks } from "../constants";
+import { navLinks } from "../constants";
 
-const MobileMenu = () => {
+const MobileMenu = ({ whatsappUrl }: { whatsappUrl: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -15,27 +15,27 @@ const MobileMenu = () => {
   return (
     <div className="tablet:hidden">
       {/* Toggle */}
-      <button className="text-white bg-purple p-4 rounded" onClick={toggle}>
-        <Menu />
+      <button
+        className="text-beige bg-beige-200 p-2 rounded border border-beige"
+        onClick={toggle}
+      >
+        <Menu size={36} />
       </button>
 
       {/* Content */}
 
       <div
-        className={`w-full h-full flex flex-col bg-beige-600 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
+        className={`w-full h-full flex flex-col bg-beige fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
           isOpen ? "-translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex w-full items-center justify-between h-20 max-width border-b border-beige">
-          <Link href="/">
-            <h5 className="text-purple text-xl font-semibold">Lucas Cardoso</h5>
-          </Link>
+        <div className="flex w-full items-center justify-end h-20 max-width border-b border-beige">
           <div className="flex items-center justify-center">
             <button
-              className="text-grey-700 hover:text-purple transition-colors"
+              className="text-grey-700 hover:text-purple transition-colors text-beige-600"
               onClick={toggle}
             >
-              <X />
+              <X size={36} />
             </button>
           </div>
         </div>
@@ -47,7 +47,7 @@ const MobileMenu = () => {
                 <NavLink
                   href={link.url}
                   label={link.label}
-                  classname="text-3xl"
+                  classname="text-3xl text-center"
                 />
               </li>
             ))}
@@ -60,18 +60,6 @@ const MobileMenu = () => {
             </Link>
           </ul>
         </nav>
-
-        <div className="w-full h-20 flex items-center justify-around max-width border-t border-beige">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              className="text-grey-700 hover:text-purple transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
       </div>
     </div>
   );
