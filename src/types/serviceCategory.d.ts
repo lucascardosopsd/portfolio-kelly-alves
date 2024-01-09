@@ -1,7 +1,7 @@
-export interface ServiceCategory {
-  order: number | null;
+interface CategoryServiceProps {
+  order: number;
   title: string;
-  desription: string;
+  description: string;
   mainImage: {
     asset: {
       url: string;
@@ -12,4 +12,9 @@ export interface ServiceCategory {
       url: string;
     };
   };
+}
+
+export interface ServiceCategory {
+  categoryName: string;
+  categoryServices: CategoryServiceProps[];
 }

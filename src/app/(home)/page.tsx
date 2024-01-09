@@ -7,12 +7,12 @@ import { getServices } from "@/services/getServices";
 export default async function Home() {
   const heroData = await getHero();
   const profileData = await getProfile();
-  const servicesData = await getServices();
+  const serviceCategoriesData = await getServices();
 
   return (
     <>
       <Hero heroData={heroData[0]} profileData={profileData[0]} />
-      <Services />
+      <Services serviceCategoriesData={serviceCategoriesData} />
     </>
   );
 }
