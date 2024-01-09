@@ -8,7 +8,7 @@ const layout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Header profileData={profileData} />
+      <Header profileData={profileData[0]} />
       {children}
       <Footer profileData={profileData[0]} />
     </>

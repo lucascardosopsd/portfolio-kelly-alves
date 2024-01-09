@@ -1,3 +1,4 @@
+import { ProfileProps } from "@/types/profile";
 import { client } from "../../sanity/lib/client";
 
 export const getProfile = async () => {
@@ -23,5 +24,5 @@ export const getProfile = async () => {
     }
   `;
 
-  return await client.fetch(query);
+  return (await client.fetch(query)) as ProfileProps[];
 };
