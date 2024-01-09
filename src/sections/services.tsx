@@ -31,7 +31,26 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
         />
 
         <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-4 gap-4">
-          {serviceCategoriesData.map((category, index) => (
+          {serviceCategoriesData.slice(0, 4).map((category, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center"
+            >
+              <p className="font-semibold">{category.categoryName}</p>
+
+              <div>
+                {category.categoryServices.map((service, index) => (
+                  <p className="text-sm text-center" key={index}>
+                    • {service.title}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 gap-4">
+          {serviceCategoriesData.slice(4).map((category, index) => (
             <div
               key={index}
               className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center"
