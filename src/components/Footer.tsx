@@ -12,17 +12,15 @@ interface FooterProps {
 const Footer = ({ profileData }: FooterProps) => {
   return (
     <footer className="py-10 border-t border-beige max-width">
-      <div className="flex item-center justify-between">
-        <nav className="flex gap-12 max-tablet:hidden">
-          <ul className="flex items-center gap-8">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <CustomLink href={link.url} label={link.label} />
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <nav className="flex justify-center items-center gap-12 max-tablet:hidden">
+        <ul className="flex items-center gap-8">
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <CustomLink href={link.url} label={link.label} />
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Contact Details */}
 
