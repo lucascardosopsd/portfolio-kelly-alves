@@ -7,9 +7,9 @@ import Logo from "./Logo";
 const Header = () => {
   return (
     <>
-      <div className="flex w-full items-center border-b border-peach">
+      <div className="flex w-full items-center border-b border-beige">
         <Headroom className="w-full hidden tablet:block justify-end">
-          <header className="flex items-center justify-between h-20 max-width w-full z-10 bg-peach-100">
+          <header className="flex items-center justify-between h-20 max-width w-full z-10 bg-beige-100">
             <Logo />
             <nav className="flex items-center gap-12 max-tablet:hidden">
               <ul className="flex items-center gap-8">

@@ -4,7 +4,7 @@ import { contactDetails, navLinks, socialLinks } from "../constants";
 
 const Footer = () => {
   return (
-    <footer className="py-10 border-t border-peach max-width">
+    <footer className="py-10 border-t border-beige max-width">
       <div className="flex item-center justify-between">
         <Link href="/" className="text-purple text-xl font-semibold">
           Lucas Cardoso
@@ -23,7 +23,7 @@ const Footer = () => {
             <a
               href={link.url}
               key={index}
-              className="w-10 h-10 bg-purple text-peach flex items-center justify-center rounded"
+              className="w-10 h-10 bg-purple text-beige flex items-center justify-center rounded"
             >
               <link.icon strokeWidth={0} fill="currentColor" />
             </a>
@@ -33,7 +33,7 @@ const Footer = () => {
 
       {/* Contact Details */}
 
-      <div className="w-max border border-peach p-5 mx-auto flex gap-5 tablet:gap-10 flex-col tablet:flex-row items-center rounded-lg mt-5">
+      <div className="w-max border border-beige p-5 mx-auto flex gap-5 tablet:gap-10 flex-col tablet:flex-row items-center rounded-lg mt-5">
         {contactDetails.map((detail, index) => (
           <div key={index} className="flex gap-3 items-center text-purple ">
             <detail.icon size={20} />

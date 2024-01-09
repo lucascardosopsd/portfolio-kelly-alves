@@ -22,11 +22,11 @@ const MobileMenu = () => {
       {/* Content */}
 
       <div
-        className={`w-full h-full flex flex-col bg-peach-600 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
+        className={`w-full h-full flex flex-col bg-beige-600 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
           isOpen ? "-translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex w-full items-center justify-between h-20 max-width border-b border-peach">
+        <div className="flex w-full items-center justify-between h-20 max-width border-b border-beige">
           <Link href="/">
             <h5 className="text-purple text-xl font-semibold">Lucas Cardoso</h5>
           </Link>
@@ -61,7 +61,7 @@ const MobileMenu = () => {
           </ul>
         </nav>
 
-        <div className="w-full h-20 flex items-center justify-around max-width border-t border-peach">
+        <div className="w-full h-20 flex items-center justify-around max-width border-t border-beige">
           {socialLinks.map((link, index) => (
             <a
               key={index}
