@@ -1,14 +1,18 @@
-import Link from "next/link";
 import CustomLink from "./CustomLink";
-import { contactDetails, navLinks, socialLinks } from "../constants";
+import { navLinks } from "../constants";
+import { ProfileProps } from "@/types/profile";
+import Link from "next/link";
+import { CiFacebook, CiInstagram } from "react-icons/ci";
+import { PiWhatsappLogoLight } from "react-icons/pi";
 
-const Footer = () => {
+interface FooterProps {
+  profileData: ProfileProps;
+}
+
+const Footer = ({ profileData }: FooterProps) => {
   return (
     <footer className="py-10 border-t border-beige max-width">
       <div className="flex item-center justify-between">
-        <Link href="/" className="text-purple text-xl font-semibold">
-          Lucas Cardoso
-        </Link>
         <nav className="flex gap-12 max-tablet:hidden">
           <ul className="flex items-center gap-8">
             {navLinks.map((link, index) => (
@@ -18,32 +22,51 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
-        <div className="flex gap-3">
-          {socialLinks.map((link, index) => (
-            <a
-              href={link.url}
-              key={index}
-              className="w-10 h-10 bg-purple text-beige flex items-center justify-center rounded"
-            >
-              <link.icon strokeWidth={0} fill="currentColor" />
-            </a>
-          ))}
-        </div>
       </div>
 
       {/* Contact Details */}
 
-      <div className="w-max border border-beige p-5 mx-auto flex gap-5 tablet:gap-10 flex-col tablet:flex-row items-center rounded-lg mt-5">
-        {contactDetails.map((detail, index) => (
-          <div key={index} className="flex gap-3 items-center text-purple ">
-            <detail.icon size={20} />
-            <p className="text-grey-600">{detail.text}</p>
-          </div>
-        ))}
+      <div className="flex flex-col tablet:flex-row items-center justify-center gap-2 mb-2">
+        <div className="border border-beige text-beige-700 p-5 flex flex-col tablet:flex-row items-center rounded-lg min-h-16 text-center">
+          {profileData.hours}
+        </div>
+
+        <div className="border border-beige text-beige-700 p-5 flex flex-col tablet:flex-row items-center rounded-lg h-16">
+          {profileData.address}
+        </div>
+
+        <div className="flex flex-row gap-2 text-4xl tablet:text-2xl border border-beige text-beige-700 p-5 items-center rounded-lg h-16">
+          <Link
+            href={profileData.instagramUrl}
+            className="hover:scale-125 transition"
+          >
+            <CiInstagram />
+          </Link>
+
+          <Link
+            href={profileData.facebookUrl}
+            className="hover:scale-125 transition"
+          >
+            <CiFacebook />
+          </Link>
+
+          <Link
+            href={profileData.whatsappUrl}
+            className="hover:scale-125 transition"
+          >
+            <PiWhatsappLogoLight />
+          </Link>
+        </div>
       </div>
 
-      <p className="text-center mt-2 text-sm">
-        Copyright © {new Date().getFullYear()} Lucas Cardoso
+      <Link href="https://lucascardoso.vercel.app/">
+        <p className="text-beige-800 text-center text-sm">
+          Desenvolvido por Lucas Cardoso | Clique e saiba mais
+        </p>
+      </Link>
+
+      <p className="text-center mt-2 text-sm text-beige-700">
+        Copyright © {new Date().getFullYear()}
       </p>
     </footer>
   );

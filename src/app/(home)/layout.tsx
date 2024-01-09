@@ -10,7 +10,7 @@ const layout = async ({ children }: { children: ReactNode }) => {
     <>
       <Header profileData={profileData} />
       {children}
-      <Footer />
+      <Footer profileData={profileData[0]} />
     </>
   );
 };
