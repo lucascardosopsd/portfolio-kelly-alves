@@ -1,13 +1,15 @@
-"use client";
 import { ReactNode } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { getProfile } from "@/services/getProfile";
 
-const layout = ({ children }: { children: ReactNode }) => {
+const layout = async ({ children }: { children: ReactNode }) => {
+  const profileData = await getProfile();
+
   return (
     <>
-      <Header />
-      <main>{children}</main>
+      <Header profileData={profileData} />
+      {children}
       <Footer />
     </>
   );
