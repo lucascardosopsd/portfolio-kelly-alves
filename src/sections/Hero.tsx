@@ -1,88 +1,103 @@
 "use client";
 import { watchInView } from "@/tools/watchInView";
-import { ArrowRight, Phone } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import { useRef } from "react";
 import FadeDiv from "@/components/FadeDiv";
-import { socialLinks } from "@/constants";
+import { CiInstagram, CiFacebook } from "react-icons/ci";
+import { PiWhatsappLogoLight } from "react-icons/pi";
+import { HeroDataProps } from "@/types/hero";
+import { ProfileProps } from "@/types/profile";
+import Image from "next/image";
+import Link from "next/link";
 
-interface HeroDataProps {
-  greeting: string;
-  title: string;
-  subtitle: string;
-  pic: {
-    asset: {
-      url: string;
-    };
-  };
+export interface HeroProps {
+  heroData: HeroDataProps;
+  profileData: ProfileProps;
 }
 
-interface HeroProps {
-  data: HeroDataProps;
-}
-
-const Hero = ({ data }: HeroProps) => {
+const Hero = ({ heroData, profileData }: HeroProps) => {
   const ref = useRef(null);
   watchInView({ ref, id: "hero" });
 
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row space-x-4 py-4 tablet:py-0"
+        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row gap-4 py-8 tablet:py-0 text-beige-700 relative"
         id="hero"
         ref={ref}
       >
-        {/* Left */}
-        <div className="flex-1 tablet:w:2/3 mt-10 tablet:mt-0 space-y-4">
-          <div className="flex flex-col gap-3 items-center tablet:items-start max-w-2xl text-center tablet:text-left">
-            <p className="px-4 py-2 bg-beige-500 text-grey-600 w-max rounded">
-              {data?.greeting}
-            </p>
-            <h1 className="text-grey">{data?.title}</h1>
-            <p className="text-grey-600">{data?.subtitle}</p>
-          </div>
-
-          <div className="flex flex-col space-y-4">
-            <Link href="/#portfolio" className="btn btn-primary">
-              Portfolio
-              <ArrowRight size={16} />
+        {/* Left Side */}
+        <div className="flex flex-col text-center tablet:text-start justify-center flex-1 h-full gap-5 tablet:mt-20">
+          <p className="text-5xl font-semibold">{heroData.title}</p>
+          <p>{heroData.subTitle}</p>
+          <div className="flex justify-center tablet:justify-start gap-4 text-6xl tablet:text-4xl">
+            <Link
+              href={profileData.instagramUrl}
+              className="hover:scale-125 transition"
+            >
+              <CiInstagram />
             </Link>
 
             <Link
-              href="/contact"
-              className="btn border hover:bg-zinc-100 hover:text-purple transition border-beige"
+              href={profileData.facebookUrl}
+              className="hover:scale-125 transition"
             >
-              <Phone />
-              Fale Comigo
+              <CiFacebook />
             </Link>
 
-            <div className="flex justify-center tablet:justify-start gap-3">
-              {socialLinks.map((link, index) => (
-                <div className="flex items-center space-x-2" key={index}>
-                  <a
-                    href={link.url}
-                    className="w-10 h-10 bg-purple text-white flex items-center justify-center rounded"
-                  >
-                    <link.icon strokeWidth={0} fill="currentColor" />
-                  </a>
-                  <p className="text-zinc-800">{link.label}</p>
-                </div>
-              ))}
-            </div>
+            <Link
+              href={profileData.whatsappUrl}
+              className="hover:scale-125 transition"
+            >
+              <PiWhatsappLogoLight />
+            </Link>
           </div>
         </div>
+
+        {/* Center */}
+        <div className="flex flex-col align-center justify-center flex-1 h-full w-full relative">
+          <span className="w-full h-20 bg-gradient-to-t from-beige-300 to-transparent absolute bottom-0 left-0 z-10" />
+
+          <Image
+            alt="Hero"
+            src={profileData.pics[0].file.asset.url}
+            width={0}
+            height={0}
+            sizes="100vh"
+            className="w-full h-auto"
+          />
+        </div>
+
         {/* Right */}
-        <div className="flex flex-1 h-full w-full items-center justify-center py-4 tablet:py-0">
-          <div className="relative h-[70vh] w-auto rounded-2xl border border-beige bg-zinc-50">
-            <Image
-              src={data?.pic.asset.url}
-              alt="Foto Desenvolvedor"
-              height={1000}
-              width={1000}
-              className="object-cover h-full w-full"
-            />
+        <div className="flex flex-col align-center justify-center flex-1 h-full gap-5 tablet:mb-20">
+          <p className="text-6xl tablet:text-5xl font-semibold text-center tablet:text-end">
+            {profileData.name}
+          </p>
+          <p className="text-center tabet:text-end">{profileData.motto}</p>
+          <div className="flex gap-4">
+            {heroData.highlights.map((highlight, index) => (
+              <div
+                key={index}
+                className="flex flex-col gap-2 items-center justify-center tablet:justify-end"
+              >
+                <p className="text-3xl tablet:text-2xl text-center tablet:text-end w-full border border-beige p-2 rounded">
+                  {highlight.title}
+                </p>
+                <p className="text-center tablet:text-end text-base tablet:text-sm">
+                  {highlight.subTitle}
+                </p>
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* Background text */}
+        <div>
+          <p className="absolute text-8xl -z-50 text-beige font-black left-0 top-10">
+            MASSOTERAPEUTA
+          </p>
+          <p className="absolute text-8xl -z-50 text-beige font-black right-0 bottom-10">
+            ESTETICISTA
+          </p>
         </div>
       </section>
     </FadeDiv>
