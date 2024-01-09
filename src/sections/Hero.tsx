@@ -21,7 +21,7 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row gap-4 py-8 tablet:py-0 text-beige-700 relative"
+        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row gap-4 py-8 tablet:py-0 text-beige-800 relative"
         id="hero"
         ref={ref}
       >

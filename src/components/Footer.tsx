@@ -25,15 +25,15 @@ const Footer = ({ profileData }: FooterProps) => {
       {/* Contact Details */}
 
       <div className="flex flex-col tablet:flex-row items-center justify-center gap-2 mb-2">
-        <div className="border border-beige text-beige-700 p-5 flex flex-col tablet:flex-row items-center rounded-lg min-h-16 text-center">
+        <div className="border border-beige text-beige-800 p-5 flex flex-col tablet:flex-row items-center rounded-lg min-h-16 text-center">
           {profileData.hours}
         </div>
 
-        <div className="border border-beige text-beige-700 p-5 flex flex-col tablet:flex-row items-center rounded-lg h-16">
+        <div className="border border-beige text-beige-800 p-5 flex flex-col tablet:flex-row items-center rounded-lg h-16">
           {profileData.address}
         </div>
 
-        <div className="flex flex-row gap-2 text-4xl tablet:text-2xl border border-beige text-beige-700 p-5 items-center rounded-lg h-16">
+        <div className="flex flex-row gap-2 text-4xl tablet:text-2xl border border-beige text-beige-800 p-5 items-center rounded-lg h-16">
           <Link
             href={profileData.instagramUrl}
             className="hover:scale-125 transition"
@@ -63,7 +63,7 @@ const Footer = ({ profileData }: FooterProps) => {
         </p>
       </Link>
 
-      <p className="text-center mt-2 text-sm text-beige-700">
+      <p className="text-center mt-2 text-sm text-beige-800">
         Copyright © {new Date().getFullYear()}
       </p>
     </footer>

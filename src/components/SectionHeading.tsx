@@ -13,8 +13,8 @@ const SectionHeading = ({
 }: SectionHeadingProps) => {
   return (
     <div className={`max-w-xl mx-auto mb-6 text-center ${classname}`}>
-      <h2 className="text-purple mb-2">{title}</h2>
-      <p className="text-grey-600">{subtitle}</p>
+      <h2 className="text-beige-800 mb-2">{title}</h2>
+      <p className="text-beige-800">{subtitle}</p>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col gap-4 py-8 tablet:py-4 text-beige-700 relative"
+        className="flex items-center justify-center max-width flex-col gap-4 py-4 text-beige-800 relative"
         id="services"
         ref={ref}
       >
@@ -46,6 +46,8 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
             </div>
           ))}
         </div>
+
+        <button className="btn btn-primary">Ver Detalhes</button>
       </section>
     </FadeDiv>
   );
