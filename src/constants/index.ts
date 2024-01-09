@@ -1,5 +1,5 @@
 "use client";
-import { Linkedin, Mail, MapPin, Phone, PhoneIcon } from "lucide-react";
+import { Linkedin, PhoneIcon } from "lucide-react";
 
 export const navLinks = [
   {
@@ -36,23 +36,5 @@ export const socialLinks = [
     label: "Whatsapp",
     icon: PhoneIcon,
     url: "https://api.whatsapp.com/send?phone=5517996484654",
-  },
-];
-
-export const contactDetails = [
-  {
-    id: 1,
-    icon: Phone,
-    text: "(00)00000-0000",
-  },
-  {
-    id: 2,
-    icon: Mail,
-    text: "email@gmail.com",
-  },
-  {
-    id: 3,
-    icon: MapPin,
-    text: "cidade-AB, Brasil",
   },
 ];
