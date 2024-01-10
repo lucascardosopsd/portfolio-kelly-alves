@@ -7,12 +7,15 @@ import Service from "@/sections/service";
 import Bio from "@/sections/Bio";
 import { getResults } from "@/services/getResults";
 import Results from "@/sections/Results";
+import { getRatings } from "@/services/getRatings";
+import Ratings from "@/sections/ratings";
 
 export default async function Home() {
   const heroData = await getHero();
   const profileData = await getProfile();
   const serviceCategoriesData = await getServices();
-  const ResultsData = await getResults();
+  const resultsData = await getResults();
+  const ratingsData = await getRatings();
 
   return (
     <>
@@ -29,7 +32,8 @@ export default async function Home() {
         ))
       )}
       <Bio profileData={profileData[0]} />
-      <Results resultsData={ResultsData} />
+      <Results resultsData={resultsData} />
+      <Ratings ratingsData={ratingsData} />
     </>
   );
 }

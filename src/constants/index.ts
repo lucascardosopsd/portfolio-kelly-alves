@@ -17,6 +17,6 @@ export const navLinks = [
   },
   {
     label: "Avaliações",
-    url: "#rating",
+    url: "#ratings",
   },
 ];

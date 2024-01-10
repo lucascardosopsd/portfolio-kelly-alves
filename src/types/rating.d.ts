@@ -1,6 +1,6 @@
-export interface RatingProps {
+export interface RatingDataProps {
   name: string;
-  testimonyTitle: string;
-  testimonyText: string;
+  testimony: string;
+  instagram: string;
   clientPic: string;
 }

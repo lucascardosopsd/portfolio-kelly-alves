@@ -6,7 +6,7 @@ export const getRatings = async () => {
         name,
         testimony,
         instagram,
-        "clientPic": clientPic.asset->url,
+        "clientPic": clientPic.asset->url
     }
     `;
 
