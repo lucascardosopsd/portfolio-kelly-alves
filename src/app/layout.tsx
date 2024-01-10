@@ -9,18 +9,27 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Kelly Alves | Massoterapia e Estética",
-  description:
-    "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
   openGraph: {
+    title: "Kelly Alves | Massoterapia e Estética",
+    description:
+      "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
+    url: "https://kellyalves.vercel.app/",
+    siteName: "Next.js",
     images: [
       {
-        url: "/images/open-graph.png",
-        width: 1200,
-        height: 630,
-        alt: "Imagem de capa para o seu portfolio",
+        url: "http://localhost:3000/api/og?title=KellyAlves", // Dynamic og route
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "http://localhost:3000/api/og?title=KellyAlves", // Dynamic og route
+        width: 1800,
+        height: 1600,
+        alt: "Kelly Alves",
       },
     ],
+    locale: "pt_BR",
+    type: "website",
   },
 };
 
