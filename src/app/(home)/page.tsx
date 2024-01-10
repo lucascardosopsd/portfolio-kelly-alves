@@ -4,6 +4,7 @@ import Hero from "@/sections/Hero";
 import Services from "@/sections/services";
 import { getServices } from "@/services/getServices";
 import Service from "@/sections/service";
+import Bio from "@/sections/bio";
 
 export default async function Home() {
   const heroData = await getHero();
@@ -24,6 +25,7 @@ export default async function Home() {
           />
         ))
       )}
+      <Bio profileData={profileData[0]} />
     </>
   );
 }
