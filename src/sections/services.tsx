@@ -6,13 +6,15 @@ import { ServiceCategory } from "@/types/serviceCategory";
 import SectionHeading from "@/components/SectionHeading";
 import useShowServices from "@/context/showServices";
 import Image from "next/image";
+import { IoChevronDownSharp } from "react-icons/io5";
+import { IoIosClose } from "react-icons/io";
 
 export interface ServicesProps {
   serviceCategoriesData: ServiceCategory[];
 }
 
 const Services = ({ serviceCategoriesData }: ServicesProps) => {
-  const { toggle } = useShowServices();
+  const { toggle, isOpen } = useShowServices();
   const ref = useRef(null);
   watchInView({ ref, id: "hero" });
 
@@ -68,8 +70,18 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           ))}
         </div>
 
-        <button className="btn btn-primary" onClick={toggle}>
-          Ver Detalhes
+        <button
+          className="btn rounded border border-beige-700 w-full"
+          onClick={toggle}
+        >
+          <p className="text-beige-700">
+            {!isOpen ? "Ver Detalhes" : "Fechar Detalhes"}
+          </p>
+          {!isOpen ? (
+            <IoChevronDownSharp className="text-beige-700" />
+          ) : (
+            <IoIosClose className="text-beige-700 text-2xl" />
+          )}
         </button>
 
         {/* Illustrations */}

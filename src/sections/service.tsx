@@ -17,6 +17,10 @@ const Service = ({ service, mirror, categoryTitle }: ServiceProps) => {
   const ref = useRef(null);
   watchInView({ ref, id: "hero" });
 
+  if (!isOpen) {
+    return <></>;
+  }
+
   return (
     <FadeDiv>
       <section
