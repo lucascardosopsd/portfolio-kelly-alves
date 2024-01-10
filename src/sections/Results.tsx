@@ -22,7 +22,7 @@ const Results = ({ resultsData }: ResultsProps) => {
         ref={ref}
       >
         <SectionHeading
-          title="Resultdos"
+          title="Resultado"
           subtitle="Essas são as provas do meu trabalho. Meus resultados são comprovados."
         />
         <div className="relative flex flex-col tablet:flex-row gap-4 w-full tablet:p-10 overflow-x-auto">

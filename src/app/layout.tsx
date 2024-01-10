@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+    <html lang="pt-BR" className="!scroll-smooth" suppressHydrationWarning>
       <body className={`bg-beige-300 ${poppins.className}`}>
         <Theme>{children}</Theme>
       </body>

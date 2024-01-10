@@ -16,9 +16,9 @@ const Header = ({ profileData }: HeaderProps) => {
   const [y, setY] = useState(window.scrollY);
 
   const handleNavigation = useCallback(() => {
-    y > window.scrollY && setFixedHeader(window.scrollY >= 200);
+    y > window.scrollY && setFixedHeader(window.scrollY >= 500);
 
-    y < window.scrollY && setFixedHeader(window.scrollY <= 200);
+    y < window.scrollY && setFixedHeader(window.scrollY <= 500);
 
     setY(window.scrollY);
   }, [y]);
@@ -35,7 +35,9 @@ const Header = ({ profileData }: HeaderProps) => {
     <>
       <div
         className={`hidden tablet:flex w-full items-center transition ${
-          fixedHeader ? "fixed top-0 bg-beige-400 z-30" : "static"
+          fixedHeader
+            ? "fixed top-0 bg-beige-300 z-30"
+            : "static bg-transparent"
         }`}
       >
         <header className="flex items-center justify-between h-20 max-width w-full z-10">
