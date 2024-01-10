@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header = async ({ profileData }: HeaderProps) => {
   return (
     <>
-      <div className="flex w-full items-center">
+      <div className="hidden tablet:flex w-full items-center">
         <header className="flex items-center justify-between h-20 max-width w-full z-10">
           <nav className="flex items-center justify-center w-full gap-12 max-tablet:hidden">
             <ul className="flex items-center gap-8 text-lg">

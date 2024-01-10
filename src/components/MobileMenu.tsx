@@ -19,7 +19,7 @@ const MobileMenu = ({ whatsappUrl }: { whatsappUrl: string }) => {
         className="text-beige bg-beige-200 p-2 rounded border border-beige"
         onClick={toggle}
       >
-        <Menu size={36} />
+        <Menu size={26} />
       </button>
 
       {/* Content */}

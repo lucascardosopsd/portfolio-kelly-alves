@@ -21,7 +21,7 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row gap-4 py-8 tablet:py-0 text-beige-800 relative !tablet:min-h-[calc(100svh-5rem)]"
+        className="flex items-center justify-center max-width flex-col-reverse tablet:flex-row gap-4 py-4 tablet:py-0 text-beige-800 relative !tablet:min-h-[calc(100svh-5rem)] mt-4"
         id="hero"
         ref={ref}
       >
@@ -73,7 +73,7 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
             {profileData.name}
           </p>
           <p className="text-center tablet:text-end">{profileData.motto}</p>
-          <div className="flex gap-4">
+          <div className="flex flex-col tablet:flex-row gap-4">
             {heroData.highlights.map((highlight, index) => (
               <div
                 key={index}
