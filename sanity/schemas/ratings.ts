@@ -9,7 +9,12 @@ export default {
       title: "Nome Da Cliente",
     },
     {
-      name: "testimony",
+      name: "testimonyTitle",
+      type: "string",
+      title: "Depoimento",
+    },
+    {
+      name: "testimonyText",
       type: "string",
       title: "Depoimento",
     },

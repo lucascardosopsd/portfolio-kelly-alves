@@ -1,5 +1,6 @@
 export interface RatingProps {
   name: string;
-  testimony: string;
+  testimonyTitle: string;
+  testimonyText: string;
   clientPic: string;
 }

@@ -4,7 +4,8 @@ export const getRatings = async () => {
   const query = `
     *[_type == "ratings"]{
         name,
-        testimony,
+        testimonyTitle,
+        testimonyText,
         "clientPic": clientPic.asset->url,
     }
     `;
