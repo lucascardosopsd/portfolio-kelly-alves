@@ -13,6 +13,9 @@ const config: Config = {
       boxShadow: {
         custom: "10px 10px 30px -15px rgba(23, 23, 23, 0.4)",
       },
+      scale: {
+        "-100": "-1",
+      },
       colors: {
         beige: {
           DEFAULT: "#FFD1AF",

@@ -24,7 +24,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
         ref={ref}
       >
         <SectionHeading
-          title="Procedimentos"
+          title="Serviços e Procedimentos"
           subtitle="Meus procedimentos são pensados para lhe trazer o melhor em
           massoterapia e abaixo estarei apresentando os nomes e as vantagens de
           cada um."

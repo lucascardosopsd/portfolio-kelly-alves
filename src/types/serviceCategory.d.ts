@@ -1,17 +1,9 @@
-interface CategoryServiceProps {
+export interface CategoryServiceProps {
   order: number;
   title: string;
   description: string;
-  mainImage: {
-    asset: {
-      url: string;
-    };
-  };
-  secondaryImage: {
-    asset: {
-      url: string;
-    };
-  };
+  mainImage: string;
+  secondaryImage: string;
 }
 
 export interface ServiceCategory {

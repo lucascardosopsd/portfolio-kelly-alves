@@ -3,6 +3,7 @@ import { getHero } from "../../services/getHero";
 import Hero from "@/sections/Hero";
 import Services from "@/sections/services";
 import { getServices } from "@/services/getServices";
+import Service from "@/sections/service";
 
 export default async function Home() {
   const heroData = await getHero();
@@ -13,6 +14,16 @@ export default async function Home() {
     <>
       <Hero heroData={heroData[0]} profileData={profileData[0]} />
       <Services serviceCategoriesData={serviceCategoriesData} />
+      {serviceCategoriesData.map((category) =>
+        category.categoryServices.map((service, index) => (
+          <Service
+            service={service}
+            mirror={index % 2 === 0}
+            key={index}
+            categoryTitle={category.categoryName}
+          />
+        ))
+      )}
     </>
   );
 }

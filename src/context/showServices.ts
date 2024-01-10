@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface ShowServicesStoreProps {
-  open: boolean;
+  isOpen: boolean;
   toggle: () => void;
 }
 
 const useShowServices = create<ShowServicesStoreProps>((set) => ({
-  open: false,
-  toggle: () => set((state) => ({ open: !state.open })),
+  isOpen: false,
+  toggle: () => set((state) => ({ isOpen: !state.isOpen })),
 }));
 
 export default useShowServices;
