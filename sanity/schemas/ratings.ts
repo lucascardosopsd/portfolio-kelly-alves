@@ -9,12 +9,7 @@ export default {
       title: "Nome Da Cliente",
     },
     {
-      name: "testimonyTitle",
-      type: "string",
-      title: "Depoimento",
-    },
-    {
-      name: "testimonyText",
+      name: "testimony",
       type: "string",
       title: "Depoimento",
     },
@@ -22,6 +17,11 @@ export default {
       name: "clientPic",
       type: "image",
       title: "Foto da Cliente",
+    },
+    {
+      name: "instagram",
+      type: "string",
+      title: "Instagram",
     },
   ],
 };
