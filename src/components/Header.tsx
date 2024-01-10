@@ -4,7 +4,7 @@ import NavLink from "./CustomLink";
 import MobileMenu from "./MobileMenu";
 import { navLinks } from "../constants";
 import { ProfileProps } from "@/types/profile";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface HeaderProps {
   profileData: ProfileProps;
@@ -13,13 +13,23 @@ interface HeaderProps {
 const Header = ({ profileData }: HeaderProps) => {
   const [fixedHeader, setFixedHeader] = useState(false);
 
-  useEffect(() => {
-    document.addEventListener("scroll", () => {
-      !fixedHeader && setFixedHeader(window.scrollY >= 200);
+  const [y, setY] = useState(window.scrollY);
 
-      fixedHeader && setFixedHeader(window.scrollY <= 200);
-    });
-  }, []);
+  const handleNavigation = useCallback(() => {
+    y > window.scrollY && setFixedHeader(window.scrollY >= 200);
+
+    y < window.scrollY && setFixedHeader(window.scrollY <= 200);
+
+    setY(window.scrollY);
+  }, [y]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleNavigation);
+
+    return () => {
+      window.removeEventListener("scroll", handleNavigation);
+    };
+  }, [handleNavigation]);
 
   return (
     <>
