@@ -7,6 +7,7 @@ export interface CategoryServiceProps {
 }
 
 export interface ServiceCategory {
+  order: number;
   categoryName: string;
   categoryServices: CategoryServiceProps[];
 }

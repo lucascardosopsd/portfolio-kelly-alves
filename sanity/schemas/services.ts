@@ -4,6 +4,11 @@ export default {
   title: "Categorias de Serviços",
   fields: [
     {
+      name: "order",
+      type: "number",
+      title: "Posição",
+    },
+    {
       name: "categoryName",
       type: "string",
       title: "Nome",
@@ -48,4 +53,8 @@ export default {
       ],
     },
   ],
+
+  initialValue: {
+    order: 0,
+  },
 };

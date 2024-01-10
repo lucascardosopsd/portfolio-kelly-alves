@@ -13,7 +13,9 @@ import Ratings from "@/sections/ratings";
 export default async function Home() {
   const heroData = await getHero();
   const profileData = await getProfile();
-  const serviceCategoriesData = await getServices();
+  const serviceCategoriesData = (await getServices()).sort(
+    (a, b) => a.order - b.order
+  );
   const resultsData = await getResults();
   const ratingsData = await getRatings();
 
