@@ -29,7 +29,7 @@ const Ratings = ({ ratingsData }: RatingProps) => {
 
         <div className="grid grid-cols-1 tablet:grid-cols-2 gap-8">
           {ratingsData.map((rating, index) => (
-            <div className="flex flex-col tablet:flex-row gap-4">
+            <div className="flex flex-col tablet:flex-row gap-4" key={index}>
               <div className="flex flex-col justify-center items-center gap-1">
                 <div className="flex flex-col justify-center  h-40 w-40 relative">
                   <Image
@@ -45,8 +45,8 @@ const Ratings = ({ ratingsData }: RatingProps) => {
                   <p className="text-center">{rating.name}</p>
 
                   <div className="flex justify-between w-1/2 mx-auto">
-                    {[...Array(5)].map(() => (
-                      <FaStar />
+                    {[...Array(5)].map((_, index) => (
+                      <FaStar key={index} />
                     ))}
                   </div>
                 </div>
