@@ -16,7 +16,7 @@ export interface ServicesProps {
 const Services = ({ serviceCategoriesData }: ServicesProps) => {
   const { toggle, isOpen } = useShowServices();
   const ref = useRef(null);
-  watchInView({ ref, id: "hero" });
+  watchInView({ ref, id: "services" });
 
   return (
     <FadeDiv>

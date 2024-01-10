@@ -15,7 +15,7 @@ export interface ServiceProps {
 const Service = ({ service, mirror, categoryTitle }: ServiceProps) => {
   const { isOpen } = useShowServices();
   const ref = useRef(null);
-  watchInView({ ref, id: "hero" });
+  watchInView({ ref, id: "services" });
 
   if (!isOpen) {
     return <></>;
