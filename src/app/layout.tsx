@@ -14,15 +14,15 @@ export const metadata: Metadata = {
     description:
       "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
     url: "https://kellyalves.vercel.app/",
-    siteName: "Next.js",
+    siteName: "Kelly Alves",
     images: [
       {
-        url: "http://localhost:3000/api/og?title=KellyAlves", // Dynamic og route
+        url: "http://localhost:3000/images/open-graph.png",
         width: 800,
         height: 600,
       },
       {
-        url: "http://localhost:3000/api/og?title=KellyAlves", // Dynamic og route
+        url: "http://localhost:3000/images/open-graph.png",
         width: 1800,
         height: 1600,
         alt: "Kelly Alves",
