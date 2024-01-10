@@ -40,6 +40,15 @@ const Bio = ({ profileData }: BioProps) => {
           </p>
           <p className="text-justify">{profileData.bio}</p>
         </div>
+
+        <Image
+          alt="illustration"
+          src="/images/woman-3-illustration.svg"
+          height={0}
+          width={0}
+          sizes="100vh"
+          className={`hidden tablet:block w-auto h-[70vh] tablet:h-[100vh] absolute -z-20 right-0`}
+        />
       </section>
     </FadeDiv>
   );
