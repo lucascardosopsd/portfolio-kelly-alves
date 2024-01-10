@@ -4,14 +4,19 @@ export default {
   title: "Resultados",
   fields: [
     {
-      name: "service",
+      name: "title",
       type: "string",
-      title: "Serviço",
+      title: "Nome do Serviço",
     },
     {
-      name: "pic",
+      name: "beforePic",
       type: "image",
-      title: "Foto",
+      title: "Antes",
+    },
+    {
+      name: "afterPic",
+      type: "image",
+      title: "Depois",
     },
   ],
 };
