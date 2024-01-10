@@ -19,7 +19,6 @@ export async function GET(req: NextRequest) {
           alignItems: "flex-start",
           justifyContent: "center",
           backgroundImage: `url(http://localhost:3000/images/open-graph.png)`,
-          backgroundSize: "cover",
         }}
       >
         <div
