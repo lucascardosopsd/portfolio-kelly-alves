@@ -22,6 +22,7 @@ export default async function Home() {
   return (
     <>
       <Hero heroData={heroData[0]} profileData={profileData[0]} />
+      <Results resultsData={resultsData} />
       <Services serviceCategoriesData={serviceCategoriesData} />
       {serviceCategoriesData.map((category) =>
         category.categoryServices.map((service, index) => (
@@ -34,7 +35,6 @@ export default async function Home() {
         ))
       )}
       <Bio profileData={profileData[0]} />
-      <Results resultsData={resultsData} />
       <Ratings ratingsData={ratingsData} />
     </>
   );

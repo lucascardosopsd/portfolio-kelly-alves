@@ -4,16 +4,16 @@ export const navLinks = [
     url: "#hero",
   },
   {
+    label: "Resultados",
+    url: "#results",
+  },
+  {
     label: "Serviços",
     url: "#services",
   },
   {
     label: "Bio",
     url: "#bio",
-  },
-  {
-    label: "Resultados",
-    url: "#results",
   },
   {
     label: "Avaliações",
