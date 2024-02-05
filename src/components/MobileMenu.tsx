@@ -52,7 +52,7 @@ const MobileMenu = ({ whatsappUrl }: { whatsappUrl: string }) => {
               </li>
             ))}
             <Link
-              href="https://api.whatsapp.com/send?phone=5517996484654"
+              href="https://wa.link/a5sb7n"
               className="btn btn-primary"
             >
               <Phone size={24} />
