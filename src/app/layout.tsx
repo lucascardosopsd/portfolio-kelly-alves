@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Theme from "../components/ThemeProvider";
+import WppFloatingButton from "@/components/WppFloatingButton";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -41,7 +42,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="!scroll-smooth" suppressHydrationWarning>
       <body className={`bg-beige-300 ${poppins.className}`}>
-        <Theme>{children}</Theme>
+        <Theme>
+          <WppFloatingButton />
+          {children}
+        </Theme>
       </body>
     </html>
   );
