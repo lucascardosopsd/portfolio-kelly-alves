@@ -4,6 +4,7 @@ import { ProfileProps } from "@/types/profile";
 import Link from "next/link";
 import { CiFacebook, CiInstagram } from "react-icons/ci";
 import { PiWhatsappLogoLight } from "react-icons/pi";
+import CurrentYear from "./CurrentYear";
 
 interface FooterProps {
   profileData: ProfileProps;
@@ -64,7 +65,7 @@ const Footer = ({ profileData }: FooterProps) => {
       </Link>
 
       <p className="text-center mt-2 text-sm text-beige-800">
-        Copyright © {new Date().getFullYear()}
+        Copyright © <CurrentYear />
       </p>
     </footer>
   );
