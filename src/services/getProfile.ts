@@ -1,7 +1,11 @@
+import { cacheTag } from 'next/cache';
 import { ProfileProps } from "@/types/profile";
 import { client } from "../../sanity/lib/client";
 
 export const getProfile = async () => {
+  'use cache'
+  cacheTag('profile')
+
   const query = `
     *[_type == "profile"]{
         name,
