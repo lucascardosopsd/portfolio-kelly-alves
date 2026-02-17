@@ -1,112 +1,94 @@
 "use client";
-import { watchInView } from "@/tools/watchInView";
-import { useRef } from "react";
+
 import FadeDiv from "@/components/FadeDiv";
-import { ServiceCategory } from "@/types/serviceCategory";
+import InfoCard from "@/components/home/InfoCard";
+import InfoModal from "@/components/home/InfoModal";
 import SectionHeading from "@/components/SectionHeading";
-import useShowServices from "@/context/showServices";
-import Image from "next/image";
-import { IoChevronDownSharp } from "react-icons/io5";
-import { IoIosClose } from "react-icons/io";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { watchInView } from "@/tools/watchInView";
+import { CategoryServiceProps, ServiceCategory } from "@/types/serviceCategory";
+import Link from "next/link";
+import { useMemo, useRef, useState } from "react";
 
 export interface ServicesProps {
   serviceCategoriesData: ServiceCategory[];
+  whatsappUrl: string;
 }
 
-const Services = ({ serviceCategoriesData }: ServicesProps) => {
-  const { toggle, isOpen } = useShowServices();
+type ServiceGridItem = {
+  categoryName: string;
+  categoryOrder: number;
+  service: CategoryServiceProps;
+};
+
+type SelectedService = {
+  categoryName: string;
+  service: CategoryServiceProps;
+};
+
+const Services = ({ serviceCategoriesData, whatsappUrl }: ServicesProps) => {
   const ref = useRef(null);
+  const [selectedService, setSelectedService] = useState<SelectedService | null>(null);
   watchInView({ ref, id: "services" });
+
+  const allServices = useMemo(() => {
+    const flattened: ServiceGridItem[] = serviceCategoriesData.flatMap((category) =>
+      category.categoryServices.map((service) => ({
+        categoryName: category.categoryName,
+        categoryOrder: category.order,
+        service,
+      }))
+    );
+
+    return flattened.sort((a, b) => {
+      if (a.categoryOrder !== b.categoryOrder) {
+        return a.categoryOrder - b.categoryOrder;
+      }
+
+      return a.service.order - b.service.order;
+    });
+  }, [serviceCategoriesData]);
 
   return (
     <FadeDiv>
       <section
-        className="relative flex flex-col items-center justify-center gap-4 py-4 text-beige-800 max-width"
+        className="relative flex flex-col items-center justify-center section-padding text-foreground"
         id="services"
         ref={ref}
       >
         <SectionHeading
+          badge="Procedimentos"
           title="Serviços e Procedimentos"
-          subtitle="Meus procedimentos são pensados para lhe trazer o melhor em
-          massoterapia e abaixo estarei apresentando os nomes e as vantagens de
-          cada um."
+          subtitle="Meus procedimentos são pensados para lhe trazer o melhor em massoterapia e abaixo estarei apresentando os nomes e as vantagens de cada um."
         />
 
-        <div className="grid grid-cols-1 gap-4 mobile:grid-cols-2 tablet:grid-cols-4">
-          {serviceCategoriesData.slice(0, 4).map((category, index) => (
-            <Card
-              key={index}
-              className="h-40 w-60 border-beige-400 bg-beige-300/80 backdrop-blur-sm"
-            >
-              <CardHeader className="pb-2">
-                <CardTitle className="text-center text-base text-beige-900">
-                  {category.categoryName}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {category.categoryServices.map((service, idx) => (
-                  <p className="text-center text-sm" key={idx}>
-                    • {service.title}
-                  </p>
-                ))}
-              </CardContent>
-            </Card>
+        <div className="grid w-full grid-cols-2 gap-3 tablet:grid-cols-3 tablet:gap-5">
+          {allServices.map(({ categoryName, service }, index) => (
+            <InfoCard
+              key={`${service.title}-${index}`}
+              badge={categoryName}
+              title={service.title}
+              description={service.description}
+              imageUrl={service.mainImage}
+              onMore={() => setSelectedService({ categoryName, service })}
+            />
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 mobile:grid-cols-2 tablet:grid-cols-3">
-          {serviceCategoriesData.slice(4).map((category, index) => (
-            <Card
-              key={index}
-              className="h-40 w-60 border-beige-400 bg-beige-300/80 backdrop-blur-sm"
-            >
-              <CardHeader className="pb-2">
-                <CardTitle className="text-center text-base text-beige-900">
-                  {category.categoryName}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {category.categoryServices.map((service, idx) => (
-                  <p className="text-center text-sm" key={idx}>
-                    • {service.title}
-                  </p>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full border-beige-700 bg-beige-200 text-beige-700 hover:bg-beige-300"
-          onClick={toggle}
-        >
-          {!isOpen ? "Ver Detalhes" : "Fechar Detalhes"}
-          {!isOpen ? (
-            <IoChevronDownSharp className="text-beige-700" />
-          ) : (
-            <IoIosClose className="text-2xl text-beige-700" />
-          )}
+        <Button asChild className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">
+          <Link href={whatsappUrl}>Quero agendar pelo WhatsApp</Link>
         </Button>
 
-        <Image
-          alt="illustration"
-          src="/images/woman-illustration-1.svg"
-          height={0}
-          width={0}
-          sizes="100vh"
-          className="absolute bottom-0 left-0 -z-10 h-[70vh] w-auto tablet:top-0 tablet:h-[100vh]"
-        />
-        <Image
-          alt="illustration"
-          src="/images/rose-illustration-1.svg"
-          height={0}
-          width={0}
-          sizes="100vh"
-          className="absolute right-0 top-0 -z-10 h-[70vh] w-auto tablet:h-[100vh]"
+        <InfoModal
+          open={selectedService !== null}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedService(null);
+            }
+          }}
+          badge={selectedService?.categoryName}
+          title={selectedService?.service.title ?? ""}
+          description={selectedService?.service.description ?? ""}
         />
       </section>
     </FadeDiv>
