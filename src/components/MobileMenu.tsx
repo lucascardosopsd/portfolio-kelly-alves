@@ -1,9 +1,10 @@
 "use client";
+
+import { navLinks } from "../constants";
 import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import NavLink from "./CustomLink";
-import { navLinks } from "../constants";
 
 const MobileMenu = ({ whatsappUrl }: { whatsappUrl: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,47 +15,32 @@ const MobileMenu = ({ whatsappUrl }: { whatsappUrl: string }) => {
 
   return (
     <div className="tablet:hidden">
-      {/* Toggle */}
       <button
-        className="text-beige bg-beige-200 p-2 rounded border border-beige"
+        className="rounded-xl border border-input bg-card p-2 text-muted-foreground shadow-sm"
         onClick={toggle}
       >
         <Menu size={26} />
       </button>
 
-      {/* Content */}
-
       <div
-        className={`w-full h-full flex flex-col bg-beige fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
-          isOpen ? "-translate-x-0" : "translate-x-full"
+        className={`fixed left-0 top-0 z-50 flex h-full w-full transform flex-col bg-background transition-all duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex w-full items-center justify-end h-20 max-width border-b border-beige">
-          <div className="flex items-center justify-center">
-            <button
-              className="text-grey-700 hover:text-purple transition-colors text-beige-600"
-              onClick={toggle}
-            >
-              <X size={36} />
-            </button>
-          </div>
+        <div className="flex h-20 w-full items-center justify-end border-b border-border max-width">
+          <button className="text-primary transition-colors hover:text-foreground" onClick={toggle}>
+            <X size={36} />
+          </button>
         </div>
 
-        <nav className="flex flex-col items-center justify-center flex-1 gap-10">
+        <nav className="flex flex-1 flex-col items-center justify-center gap-10">
           <ul className="flex flex-col gap-5">
             {navLinks.map((link, index) => (
               <li key={index} onClick={toggle}>
-                <NavLink
-                  href={link.url}
-                  label={link.label}
-                  classname="text-3xl text-center"
-                />
+                <NavLink href={link.url} label={link.label} classname="text-center text-3xl" />
               </li>
             ))}
-            <Link
-              href="https://wa.link/a5sb7n"
-              className="btn btn-primary"
-            >
+            <Link href={whatsappUrl} className="btn btn-primary">
               <Phone size={24} />
               Fale Comigo
             </Link>

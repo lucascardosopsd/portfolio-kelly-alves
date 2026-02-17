@@ -4,12 +4,12 @@ export const navLinks = [
     url: "#hero",
   },
   {
-    label: "Resultados",
-    url: "#results",
-  },
-  {
     label: "Serviços",
     url: "#services",
+  },
+  {
+    label: "Resultados",
+    url: "#results",
   },
   {
     label: "Bio",

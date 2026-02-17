@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import WppFloatingButton from "@/components/WppFloatingButton";
 import { Toaster } from "@/components/ui/sonner";
 
-const poppins = Poppins({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -42,7 +49,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="!scroll-smooth" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased`}>
+      <body
+        className={`${manrope.variable} ${playfair.variable} bg-surface-brand font-sans text-foreground antialiased`}
+      >
         <ThemeProvider>
           <WppFloatingButton />
           {children}

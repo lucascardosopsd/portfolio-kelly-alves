@@ -1,12 +1,13 @@
 "use client";
-import { watchInView } from "@/tools/watchInView";
-import { useRef } from "react";
+
 import FadeDiv from "@/components/FadeDiv";
-import Image from "next/image";
-import { ResultProps } from "@/types/result";
 import SectionHeading from "@/components/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { watchInView } from "@/tools/watchInView";
+import { ResultProps } from "@/types/result";
+import Image from "next/image";
+import { useRef } from "react";
 
 export interface ResultsProps {
   resultsData: ResultProps[];
@@ -19,56 +20,62 @@ const Results = ({ resultsData }: ResultsProps) => {
   return (
     <FadeDiv>
       <section
-        className="relative flex flex-col items-center justify-center gap-4 py-4 text-beige-800 max-width"
+        className="relative flex flex-col items-center justify-center section-padding text-foreground"
         id="results"
         ref={ref}
       >
         <SectionHeading
-          title="Resultado"
+          badge="Antes e Depois"
+          title="Resultados"
           subtitle="Essas são as provas do meu trabalho. Meus resultados são comprovados."
         />
 
-        <div className="relative flex w-full flex-col gap-4 overflow-x-auto tablet:flex-row tablet:p-10">
-          <span className="absolute right-0 top-0 bottom-0 z-10 my-0 hidden h-full w-[200px] bg-gradient-to-l from-beige-300 to-transparent tablet:block" />
+        <div className="grid w-full grid-cols-1 gap-6 tablet:grid-cols-2">
           {resultsData.map((result, index) => (
             <Card
-              className="flex h-full w-full flex-1 flex-col border-beige-600 bg-beige-100/70 tablet:min-w-[500px]"
+              className="h-full overflow-hidden rounded-3xl border-border bg-card/55"
               key={index}
             >
-              <CardHeader className="items-center pb-2">
-                <CardTitle className="text-2xl font-medium text-beige-700 tablet:text-lg">
+              <CardHeader className="space-y-3 border-b border-border/80 pb-4">
+                <Badge variant="secondary" className="w-fit rounded-full bg-muted text-muted-foreground">
+                  Caso {String(index + 1).padStart(2, "0")}
+                </Badge>
+                <CardTitle className="text-2xl leading-tight text-foreground">
                   {result.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="flex flex-col tablet:flex-row">
-                  <div className="relative h-[300px] w-auto rounded p-4">
-                    <Badge className="absolute left-6 top-6 z-20 bg-beige-700 text-beige-100">
+
+              <CardContent className="pt-5">
+                <div className="grid grid-cols-1 gap-5 mobile:grid-cols-2">
+                  <article className="group relative overflow-hidden rounded-2xl border border-border bg-background/70 p-3">
+                    <Badge className="absolute left-5 top-5 z-20 rounded-full bg-primary px-3 text-primary-foreground">
                       Antes
                     </Badge>
-                    <Image
-                      alt="result"
-                      src={result.beforePic}
-                      height={0}
-                      width={0}
-                      sizes="100vh"
-                      className="h-full w-full rounded object-cover"
-                    />
-                  </div>
+                    <div className="relative h-64 w-full overflow-hidden rounded-xl">
+                      <Image
+                        alt={`Resultado antes - ${result.title}`}
+                        src={result.beforePic}
+                        fill
+                        sizes="(max-width: 1040px) 100vw, 25vw"
+                        className="object-cover transition duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  </article>
 
-                  <div className="relative h-[300px] w-auto rounded p-4">
-                    <Badge className="absolute left-6 top-6 z-20 bg-beige-700 text-beige-100">
+                  <article className="group relative overflow-hidden rounded-2xl border border-border bg-background/70 p-3">
+                    <Badge className="absolute left-5 top-5 z-20 rounded-full bg-primary px-3 text-primary-foreground">
                       Depois
                     </Badge>
-                    <Image
-                      alt="result"
-                      src={result.afterPic}
-                      height={0}
-                      width={0}
-                      sizes="100vh"
-                      className="h-full w-full rounded object-cover"
-                    />
-                  </div>
+                    <div className="relative h-64 w-full overflow-hidden rounded-xl">
+                      <Image
+                        alt={`Resultado depois - ${result.title}`}
+                        src={result.afterPic}
+                        fill
+                        sizes="(max-width: 1040px) 100vw, 25vw"
+                        className="object-cover transition duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  </article>
                 </div>
               </CardContent>
             </Card>

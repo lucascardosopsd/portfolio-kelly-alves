@@ -1,16 +1,17 @@
 "use client";
-import { watchInView } from "@/tools/watchInView";
-import { useRef } from "react";
+
 import FadeDiv from "@/components/FadeDiv";
-import { CiInstagram, CiFacebook } from "react-icons/ci";
-import { PiWhatsappLogoLight } from "react-icons/pi";
-import { HeroDataProps } from "@/types/hero";
-import { ProfileProps } from "@/types/profile";
-import Image from "next/image";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { watchInView } from "@/tools/watchInView";
+import { HeroDataProps } from "@/types/hero";
+import { ProfileProps } from "@/types/profile";
+import { CiFacebook, CiInstagram } from "react-icons/ci";
+import { PiWhatsappLogoLight } from "react-icons/pi";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
 
 export interface HeroProps {
   heroData: HeroDataProps;
@@ -24,74 +25,68 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
   return (
     <FadeDiv>
       <section
-        className="relative flex flex-col items-center justify-between text-beige-800 max-width"
+        className="relative flex flex-col justify-center py-12 text-foreground tablet:min-h-[calc(100svh-5rem)] tablet:py-12"
         id="hero"
         ref={ref}
       >
-        <div className="flex flex-col-reverse items-center justify-center py-10 tablet:flex-row tablet:py-0">
-          <div className="mt-0 flex h-full flex-1 flex-col justify-center gap-5 text-center tablet:mt-20 tablet:text-start">
-            <Badge className="mx-auto w-fit bg-beige-700 text-beige-100 tablet:mx-0">
+        <div className="grid grid-cols-1 items-center gap-12 tablet:grid-cols-[1fr_0.85fr_1fr]">
+          <div className="flex h-full flex-col justify-center gap-5 text-center tablet:text-left">
+            <Badge className="mx-auto w-fit bg-primary text-primary-foreground tablet:mx-0">
               Atendimento personalizado
             </Badge>
-            <p className="text-5xl font-semibold">{heroData.title}</p>
-            <p>{heroData.subTitle}</p>
-            <div className="flex justify-center gap-4 text-6xl tablet:justify-start tablet:text-4xl">
-              <Link
-                href={profileData.instagramUrl}
-                className="transition hover:scale-125"
-              >
+            <h1 className="text-4xl leading-tight tablet:text-5xl">{heroData.title}</h1>
+            <p className="max-w-[36ch] text-base leading-relaxed text-muted-foreground/90 tablet:max-w-[44ch]">
+              {heroData.subTitle}
+            </p>
+
+            <div className="flex justify-center gap-4 text-5xl tablet:justify-start tablet:text-4xl">
+              <Link href={profileData.instagramUrl} className="transition hover:scale-110">
                 <CiInstagram />
               </Link>
-
-              <Link
-                href={profileData.facebookUrl}
-                className="transition hover:scale-125"
-              >
+              <Link href={profileData.facebookUrl} className="transition hover:scale-110">
                 <CiFacebook />
               </Link>
-
-              <Link
-                href={profileData.whatsappUrl}
-                className="transition hover:scale-125"
-              >
+              <Link href={profileData.whatsappUrl} className="transition hover:scale-110">
                 <PiWhatsappLogoLight />
               </Link>
             </div>
-            <Button
-              asChild
-              className="mx-auto bg-beige-700 text-beige-100 hover:bg-beige-800 tablet:mx-0"
-            >
+
+            <Button asChild className="mx-auto w-fit bg-primary text-primary-foreground hover:bg-primary/90 tablet:mx-0">
               <Link href={profileData.whatsappUrl}>Agendar via WhatsApp</Link>
             </Button>
           </div>
 
-          <div className="relative flex h-full w-full flex-1 justify-center align-end tablet:flex-[0.9]">
+          <div className="relative mx-auto w-full max-w-[460px]">
+            <div className="pointer-events-none absolute left-1/2 top-2 -z-10 h-96 w-[34rem] -translate-x-1/2 rounded-full bg-primary/25 blur-[96px]" />
             <Image
-              alt="Hero"
+              alt="Kelly Alves"
               src={profileData.pics[0].file.asset.url}
-              width={0}
-              height={0}
-              sizes="100vh"
-              className="h-auto w-full"
+              width={820}
+              height={980}
+              sizes="(max-width: 1040px) 90vw, 33vw"
+              className="h-auto w-full object-cover"
+              priority
             />
           </div>
 
-          <div className="mb-0 flex h-full flex-1 flex-col justify-center gap-5 align-center tablet:mb-20">
-            <p className="text-center text-6xl font-semibold tablet:text-end tablet:text-5xl">
-              {profileData.name}
+          <div className="flex h-full flex-col justify-center gap-5">
+            <p className="text-center text-5xl font-semibold tablet:text-right">{profileData.name}</p>
+            <p className="text-center text-base leading-relaxed text-muted-foreground/90 tablet:text-right">
+              {profileData.motto}
             </p>
-            <p className="text-center tablet:text-end">{profileData.motto}</p>
-            <div className="flex flex-col gap-4 tablet:flex-row">
+
+            <div className="grid grid-cols-1 gap-3 tablet:grid-cols-2">
               {heroData.highlights.map((highlight, index) => (
                 <Card
                   key={index}
-                  className="w-full border-beige bg-beige-200/80 backdrop-blur-sm"
+                  className="overflow-hidden border-border/90 bg-gradient-to-br from-card/70 to-surface-brand-soft/80 shadow-none"
                 >
-                  <CardContent className="flex flex-col items-center justify-center gap-2 p-3 tablet:items-end">
-                    <p className="w-full rounded border border-beige p-2 text-center text-3xl tablet:text-end tablet:text-2xl">
+                  <CardContent className="relative flex flex-col gap-2 p-4">
+                    <span className="absolute left-4 top-0 h-1 w-10 rounded-b-full bg-primary" />
+                    <p className="rounded-lg border border-input/80 bg-card/50 px-3 py-2 text-center text-2xl font-semibold tablet:text-right">
                       {highlight.title}
                     </p>
-                    <p className="text-center text-base tablet:text-end tablet:text-sm">
+                    <p className="text-center text-sm text-muted-foreground/85 tablet:text-right">
                       {highlight.subTitle}
                     </p>
                   </CardContent>
@@ -101,12 +96,9 @@ const Hero = ({ heroData, profileData }: HeroProps) => {
           </div>
         </div>
 
-        <div>
-          <p className="absolute left-0 top-10 -z-50 text-8xl font-black text-beige">
-            MASSOTERAPEUTA
-          </p>
-          <p className="absolute -right-10 bottom-10 -z-50 text-8xl font-black text-beige">
-            ESTETICISTA
+        <div className="pointer-events-none absolute inset-x-0 top-8 hidden tablet:block">
+          <p className="text-center font-display text-6xl tracking-widest text-muted-foreground/10">
+            MASSOTERAPIA E ESTETICA
           </p>
         </div>
       </section>

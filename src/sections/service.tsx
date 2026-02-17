@@ -24,7 +24,7 @@ const Service = ({ service, mirror, categoryTitle }: ServiceProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col tablet:flex-row gap-4 py-20 tablet:py-4 text-beige-800 relative border-b tablet:border-none border-beige-400"
+        className="flex items-center justify-center max-width flex-col tablet:flex-row gap-4 py-20 tablet:py-4 text-muted-foreground relative border-b tablet:border-none border-border"
         id="services"
         ref={ref}
       >
@@ -54,7 +54,7 @@ const Service = ({ service, mirror, categoryTitle }: ServiceProps) => {
         {/* Right */}
         <div className="flex-1 flex-col tablet:flex-row ">
           <div>
-            <div className="flex flex-col border border-beige-400 bg-gradient-to-t tablet:bg-gradient-to-l from-beige-300 tablet:to-transparent to-beige-400 items-center tablet:items-end justify-center p-4 rounded">
+            <div className="flex flex-col border border-border bg-gradient-to-t tablet:bg-gradient-to-l from-accent tablet:to-transparent to-accent items-center tablet:items-end justify-center p-4 rounded">
               <p
                 className={`text-2xl font-semibold text-center ${
                   !mirror ? "tablet:text-start" : "tablet:text-end"

@@ -1,10 +1,10 @@
-import CustomLink from "./CustomLink";
 import { navLinks } from "../constants";
 import { ProfileProps } from "@/types/profile";
-import Link from "next/link";
 import { CiFacebook, CiInstagram } from "react-icons/ci";
 import { PiWhatsappLogoLight } from "react-icons/pi";
+import Link from "next/link";
 import CurrentYear from "./CurrentYear";
+import CustomLink from "./CustomLink";
 
 interface FooterProps {
   profileData: ProfileProps;
@@ -12,61 +12,50 @@ interface FooterProps {
 
 const Footer = ({ profileData }: FooterProps) => {
   return (
-    <footer className="py-10 border-t border-beige max-width">
-      <nav className="flex justify-center items-center gap-12 max-tablet:hidden">
-        <ul className="flex items-center gap-8">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <CustomLink href={link.url} label={link.label} />
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <footer className="border-t border-border bg-surface-white py-14">
+      <div className="space-y-8 max-width">
+        <nav className="hidden items-center justify-center gap-12 tablet:flex">
+          <ul className="flex items-center gap-8 text-sm font-semibold">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <CustomLink href={link.url} label={link.label} />
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {/* Contact Details */}
+        <div className="grid grid-cols-1 gap-3 tablet:grid-cols-3">
+          <div className="rounded-2xl border border-border bg-surface-brand-soft p-5 text-center text-muted-foreground">
+            {profileData.hours}
+          </div>
 
-      <div className="flex flex-col tablet:flex-row items-center justify-center gap-2 mb-2">
-        <div className="border border-beige text-beige-800 p-5 flex flex-col tablet:flex-row items-center rounded-lg min-h-16 text-center">
-          {profileData.hours}
+          <div className="rounded-2xl border border-border bg-surface-brand-soft p-5 text-center text-muted-foreground">
+            {profileData.address}
+          </div>
+
+          <div className="flex items-center justify-center gap-3 rounded-2xl border border-border bg-surface-brand-soft p-5 text-3xl text-muted-foreground">
+            <Link href={profileData.instagramUrl} className="transition hover:scale-110">
+              <CiInstagram />
+            </Link>
+            <Link href={profileData.facebookUrl} className="transition hover:scale-110">
+              <CiFacebook />
+            </Link>
+            <Link href={profileData.whatsappUrl} className="transition hover:scale-110">
+              <PiWhatsappLogoLight />
+            </Link>
+          </div>
         </div>
 
-        <div className="border border-beige text-beige-800 p-5 flex flex-col tablet:flex-row items-center rounded-lg h-16">
-          {profileData.address}
-        </div>
+        <Link href="https://lucascardoso.vercel.app/">
+          <p className="text-center text-sm text-muted-foreground">
+            Desenvolvido por Lucas Cardoso | Clique e saiba mais
+          </p>
+        </Link>
 
-        <div className="flex flex-row gap-2 text-4xl tablet:text-2xl border border-beige text-beige-800 p-5 items-center rounded-lg h-16">
-          <Link
-            href={profileData.instagramUrl}
-            className="hover:scale-125 transition"
-          >
-            <CiInstagram />
-          </Link>
-
-          <Link
-            href={profileData.facebookUrl}
-            className="hover:scale-125 transition"
-          >
-            <CiFacebook />
-          </Link>
-
-          <Link
-            href={profileData.whatsappUrl}
-            className="hover:scale-125 transition"
-          >
-            <PiWhatsappLogoLight />
-          </Link>
-        </div>
-      </div>
-
-      <Link href="https://lucascardoso.vercel.app/">
-        <p className="text-beige-800 text-center text-sm">
-          Desenvolvido por Lucas Cardoso | Clique e saiba mais
+        <p className="mt-2 text-center text-sm text-muted-foreground">
+          Copyright © <CurrentYear />
         </p>
-      </Link>
-
-      <p className="text-center mt-2 text-sm text-beige-800">
-        Copyright © <CurrentYear />
-      </p>
+      </div>
     </footer>
   );
 };

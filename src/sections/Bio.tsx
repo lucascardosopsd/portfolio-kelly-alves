@@ -1,9 +1,11 @@
 "use client";
-import { watchInView } from "@/tools/watchInView";
-import { useRef } from "react";
+
 import FadeDiv from "@/components/FadeDiv";
+import { Card } from "@/components/ui/card";
+import { watchInView } from "@/tools/watchInView";
 import { ProfileProps } from "@/types/profile";
 import Image from "next/image";
+import { useRef } from "react";
 
 export interface BioProps {
   profileData: ProfileProps;
@@ -16,39 +18,28 @@ const Bio = ({ profileData }: BioProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col tablet:flex-row gap-4 py-4 text-beige-800 relative"
+        className="relative grid grid-cols-1 items-center gap-8 section-padding text-foreground tablet:grid-cols-2"
         id="bio"
         ref={ref}
       >
-        <div className="flex-1 flex items-center flex-center h-full w-full">
-          <div className="flex flex-col align-center justify-center flex-1 h-[90svh] w-full relative">
+        <Card className="border-border bg-surface-brand-soft/70 p-4">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
             <Image
-              alt="Hero"
+              alt="Foto da profissional"
               src={profileData.pics[1].file.asset.url}
-              width={0}
-              height={0}
-              sizes="100vh"
               fill
-              className="object-contain w-full h-full"
+              sizes="(max-width: 1040px) 100vw, 40vw"
+              className="object-cover"
             />
           </div>
-        </div>
+        </Card>
 
-        <div className="flex-1 flex flex-col items-center justify-center text-beige-800">
-          <p className="text-2xl font-semibold text-center tablet:text-end w-full">
-            Biografia
+        <div className="space-y-4">
+          <p className="font-display text-4xl font-semibold text-foreground">Biografia</p>
+          <p className="max-w-2xl text-justify text-base leading-8 text-muted-foreground/90">
+            {profileData.bio}
           </p>
-          <p className="text-justify">{profileData.bio}</p>
         </div>
-
-        <Image
-          alt="illustration"
-          src="/images/woman-3-illustration.svg"
-          height={0}
-          width={0}
-          sizes="100vh"
-          className={`hidden tablet:block w-auto h-[70vh] tablet:h-[100vh] absolute -z-20 right-0`}
-        />
       </section>
     </FadeDiv>
   );
