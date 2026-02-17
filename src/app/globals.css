@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&:is(.dark *));
 
 @media screen and (min-width: 320px) {
   html {
@@ -15,35 +15,172 @@
 }
 
 :root {
-  --primary: transparent;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #ffc9a1;
+
+  --radius: 0.625rem;
+  --background: #ffd9bd;
+  --foreground: #372416;
+  --card: #ffe0ca;
+  --card-foreground: #372416;
+  --popover: #ffe0ca;
+  --popover-foreground: #372416;
+  --primary: #c88554;
+  --primary-foreground: #ffebdc;
   --secondary: #ffc9a1;
+  --secondary-foreground: #372416;
+  --muted: #ffe0ca;
+  --muted-foreground: #9a633a;
+  --accent: #ffd1af;
+  --accent-foreground: #372416;
+  --destructive: #dc2626;
+  --border: #f0a56d;
+  --input: #f0a56d;
+  --ring: #c88554;
+  --chart-1: #c88554;
+  --chart-2: #f0a56d;
+  --chart-3: #9a633a;
+  --chart-4: #ffd1af;
+  --chart-5: #372416;
+  --sidebar: #ffe0ca;
+  --sidebar-foreground: #372416;
+  --sidebar-primary: #c88554;
+  --sidebar-primary-foreground: #ffebdc;
+  --sidebar-accent: #ffd1af;
+  --sidebar-accent-foreground: #372416;
+  --sidebar-border: #f0a56d;
+  --sidebar-ring: #c88554;
+}
+
+.dark {
+  --scrollbar-track: #171717;
+  --scrollbar-thumb: #a8a29e;
+
+  --background: #171717;
+  --foreground: #fafafa;
+  --card: #262626;
+  --card-foreground: #fafafa;
+  --popover: #262626;
+  --popover-foreground: #fafafa;
+  --primary: #e7e5e4;
+  --primary-foreground: #1c1917;
+  --secondary: #44403c;
+  --secondary-foreground: #fafafa;
+  --muted: #44403c;
+  --muted-foreground: #d6d3d1;
+  --accent: #57534e;
+  --accent-foreground: #fafafa;
+  --destructive: #ef4444;
+  --border: rgb(255 255 255 / 10%);
+  --input: rgb(255 255 255 / 15%);
+  --ring: #a8a29e;
+  --chart-1: #8b5cf6;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #ec4899;
+  --chart-5: #f97316;
+  --sidebar: #262626;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #8b5cf6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #44403c;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: rgb(255 255 255 / 10%);
+  --sidebar-ring: #a8a29e;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--secondary) var(--primary);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 15px;
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--primary);
+  background: var(--scrollbar-track);
   border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
+  background-color: var(--scrollbar-thumb);
   border-radius: 14px;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--scrollbar-track);
+}
+
+@theme inline {
+  --breakpoint-mobile: 490px;
+  --breakpoint-tablet: 1040px;
+  --breakpoint-desktop: 1620px;
+
+  --shadow-custom: 10px 10px 30px -15px rgba(23, 23, 23, 0.4);
+
+  --color-beige: #ffd1af;
+  --color-beige-100: #ffebdc;
+  --color-beige-200: #ffe0ca;
+  --color-beige-300: #ffd9bd;
+  --color-beige-400: #ffd1af;
+  --color-beige-500: #ffc9a1;
+  --color-beige-600: #f0a56d;
+  --color-beige-700: #c88554;
+  --color-beige-800: #9a633a;
+  --color-beige-900: #372416;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
   section {
     @apply min-h-svh overflow-x-hidden;
   }
+
   h1 {
     @apply text-5xl font-bold;
   }
@@ -71,7 +208,7 @@
 
 @layer utilities {
   .max-width {
-    @apply max-w-[1920px] mx-auto px-[16px] tablet:px-[80px] desktop:px-[162px];
+    @apply mx-auto max-w-[1920px] px-[16px] tablet:px-[80px] desktop:px-[162px];
   }
 
   .section-padding {
@@ -79,7 +216,7 @@
   }
 
   .box {
-    @apply bg-beige-200 p-8 tablet:p-12 rounded-lg border border-beige;
+    @apply rounded-lg border border-beige bg-beige-200 p-8 tablet:p-12;
   }
 
   .btn {
@@ -87,11 +224,11 @@
   }
 
   .btn-primary {
-    @apply text-beige-900 bg-gradient-to-t from-beige-700 to-beige-600 font-medium hover:from-beige-800 hover:to-beige-700 border border-beige-600;
+    @apply border border-beige-600 bg-gradient-to-t from-beige-700 to-beige-600 font-medium text-beige-900 hover:from-beige-800 hover:to-beige-700;
   }
 
   input,
   textarea {
-    @apply w-full rounded px-6 py-4 border border-beige-700 bg-beige-500 outline-none text-sm text-gray-700;
+    @apply w-full rounded border border-beige-700 bg-beige-500 px-6 py-4 text-sm text-gray-700 outline-none;
   }
 }

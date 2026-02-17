@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Theme from "../components/ThemeProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import WppFloatingButton from "@/components/WppFloatingButton";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -41,11 +42,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="!scroll-smooth" suppressHydrationWarning>
-      <body className={`bg-beige-300 ${poppins.className}`}>
-        <Theme>
+      <body className={`${poppins.className} antialiased`}>
+        <ThemeProvider>
           <WppFloatingButton />
           {children}
-        </Theme>
+          <Toaster richColors position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );
