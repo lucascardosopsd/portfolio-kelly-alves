@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { notFound } from "next/navigation";
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
@@ -9,17 +9,18 @@ import { Suspense } from 'react'
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
+const isProduction = process.env.NODE_ENV === "production";
+const isStudioEnabledInProd = process.env.NEXT_PUBLIC_ENABLE_STUDIO === "true";
 
-function StudioPage() {
-  return <NextStudio config={config} />
-}
+export default async function StudioWrapper() {
+  if (isProduction && !isStudioEnabledInProd) {
+    notFound();
+  }
 
-export default function StudioWrapper() {
-  return (
-    <Suspense fallback={null}>
-      <StudioPage />
-    </Suspense>
-  )
+  const [{ NextStudio }, { default: config }] = await Promise.all([
+    import("next-sanity/studio"),
+    import("../../../../sanity.config"),
+  ]);
+
+  return <NextStudio config={config} />;
 }
