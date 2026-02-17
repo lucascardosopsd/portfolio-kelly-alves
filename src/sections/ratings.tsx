@@ -3,9 +3,11 @@ import { watchInView } from "@/tools/watchInView";
 import { useRef } from "react";
 import FadeDiv from "@/components/FadeDiv";
 import SectionHeading from "@/components/SectionHeading";
-import Image from "next/image";
 import { RatingDataProps } from "@/types/rating";
 import { FaStar } from "react-icons/fa";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export interface RatingProps {
   ratingsData: RatingDataProps[];
@@ -18,7 +20,7 @@ const Ratings = ({ ratingsData }: RatingProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col gap-4 py-4 text-beige-800 relative"
+        className="relative flex flex-col items-center justify-center gap-4 py-4 text-beige-800 max-width"
         id="ratings"
         ref={ref}
       >
@@ -27,36 +29,36 @@ const Ratings = ({ ratingsData }: RatingProps) => {
           subtitle="Essas são avaliações reais sobre clientes safisteitas com relação ao meu trabalho"
         />
 
-        <div className="grid grid-cols-1 tablet:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2">
           {ratingsData.map((rating, index) => (
-            <div className="flex flex-col tablet:flex-row gap-4" key={index}>
-              <div className="flex flex-col justify-center items-center gap-1">
-                <div className="flex flex-col justify-center  h-40 w-40 relative">
-                  <Image
-                    alt="Foto Cliente"
-                    src={rating.clientPic}
-                    sizes="100vh"
-                    width={0}
-                    height={0}
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-center">{rating.name}</p>
+            <Card key={index} className="border-beige-400 bg-beige-100/80">
+              <CardContent className="flex flex-col gap-4 p-5 tablet:flex-row">
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <Avatar className="h-24 w-24 border-2 border-beige-500 tablet:h-28 tablet:w-28">
+                    <AvatarImage src={rating.clientPic} alt={rating.name} />
+                    <AvatarFallback>{rating.name.slice(0, 2)}</AvatarFallback>
+                  </Avatar>
 
-                  <div className="flex justify-between w-1/2 mx-auto">
-                    {[...Array(5)].map((_, index) => (
-                      <FaStar key={index} />
+                  <p className="text-center font-medium">{rating.name}</p>
+
+                  <div className="mx-auto flex w-1/2 justify-between text-beige-700">
+                    {[...Array(5)].map((_, idx) => (
+                      <FaStar key={idx} />
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <div className="flex flex-col">
-                <p>{rating.testimony}</p>
-                <p className="font-semibold">{rating.instagram}</p>
-              </div>
-            </div>
+                <div className="flex flex-col gap-3">
+                  <p>{rating.testimony}</p>
+                  <Badge
+                    variant="secondary"
+                    className="w-fit bg-beige-200 text-beige-800"
+                  >
+                    {rating.instagram}
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

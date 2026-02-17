@@ -8,6 +8,8 @@ import useShowServices from "@/context/showServices";
 import Image from "next/image";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export interface ServicesProps {
   serviceCategoriesData: ServiceCategory[];
@@ -21,7 +23,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
   return (
     <FadeDiv>
       <section
-        className="flex items-center justify-center max-width flex-col gap-4 py-4 text-beige-800 relative"
+        className="relative flex flex-col items-center justify-center gap-4 py-4 text-beige-800 max-width"
         id="services"
         ref={ref}
       >
@@ -32,66 +34,71 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           cada um."
         />
 
-        <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 mobile:grid-cols-2 tablet:grid-cols-4">
           {serviceCategoriesData.slice(0, 4).map((category, index) => (
-            <div
+            <Card
               key={index}
-              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center h-40"
+              className="h-40 w-60 border-beige-400 bg-beige-300/80 backdrop-blur-sm"
             >
-              <p className="font-semibold">{category.categoryName}</p>
-
-              <div>
-                {category.categoryServices.map((service, index) => (
-                  <p className="text-sm text-center" key={index}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-center text-base text-beige-900">
+                  {category.categoryName}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {category.categoryServices.map((service, idx) => (
+                  <p className="text-center text-sm" key={idx}>
                     • {service.title}
                   </p>
                 ))}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 mobile:grid-cols-2 tablet:grid-cols-3">
           {serviceCategoriesData.slice(4).map((category, index) => (
-            <div
+            <Card
               key={index}
-              className="flex flex-col items-center w-60 border border-beige-400 bg-beige-300 p-2 rounded justify-center h-40"
+              className="h-40 w-60 border-beige-400 bg-beige-300/80 backdrop-blur-sm"
             >
-              <p className="font-semibold">{category.categoryName}</p>
-
-              <div>
-                {category.categoryServices.map((service, index) => (
-                  <p className="text-sm text-center" key={index}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-center text-base text-beige-900">
+                  {category.categoryName}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {category.categoryServices.map((service, idx) => (
+                  <p className="text-center text-sm" key={idx}>
                     • {service.title}
                   </p>
                 ))}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <button
-          className="btn rounded border border-beige-700 w-full"
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full border-beige-700 bg-beige-200 text-beige-700 hover:bg-beige-300"
           onClick={toggle}
         >
-          <p className="text-beige-700">
-            {!isOpen ? "Ver Detalhes" : "Fechar Detalhes"}
-          </p>
+          {!isOpen ? "Ver Detalhes" : "Fechar Detalhes"}
           {!isOpen ? (
             <IoChevronDownSharp className="text-beige-700" />
           ) : (
-            <IoIosClose className="text-beige-700 text-2xl" />
+            <IoIosClose className="text-2xl text-beige-700" />
           )}
-        </button>
+        </Button>
 
-        {/* Illustrations */}
         <Image
           alt="illustration"
           src="/images/woman-illustration-1.svg"
           height={0}
           width={0}
           sizes="100vh"
-          className="w-auto h-[70vh] tablet:h-[100vh] absolute -z-10 left-0 bottom-0 tablet:top-0"
+          className="absolute bottom-0 left-0 -z-10 h-[70vh] w-auto tablet:top-0 tablet:h-[100vh]"
         />
         <Image
           alt="illustration"
@@ -99,7 +106,7 @@ const Services = ({ serviceCategoriesData }: ServicesProps) => {
           height={0}
           width={0}
           sizes="100vh"
-          className="w-auto h-[70vh] tablet:h-[100vh] absolute -z-10 right-0 top-0"
+          className="absolute right-0 top-0 -z-10 h-[70vh] w-auto tablet:h-[100vh]"
         />
       </section>
     </FadeDiv>
