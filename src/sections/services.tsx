@@ -89,6 +89,7 @@ const Services = ({ serviceCategoriesData, whatsappUrl }: ServicesProps) => {
           badge={selectedService?.categoryName}
           title={selectedService?.service.title ?? ""}
           description={selectedService?.service.description ?? ""}
+          imageUrl={selectedService?.service.mainImage}
         />
       </section>
     </FadeDiv>
