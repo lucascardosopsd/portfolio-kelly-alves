@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Studio from "./Studio";
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
@@ -17,10 +18,5 @@ export default async function StudioWrapper() {
     notFound();
   }
 
-  const [{ NextStudio }, { default: config }] = await Promise.all([
-    import("next-sanity/studio"),
-    import("../../../../sanity.config"),
-  ]);
-
-  return <NextStudio config={config} />;
+  return <Studio />;
 }
