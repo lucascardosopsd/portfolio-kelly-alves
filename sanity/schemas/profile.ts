@@ -45,7 +45,8 @@ export default {
     },
     {
       name: "bio",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }],
       title: "Bio",
     },
     {

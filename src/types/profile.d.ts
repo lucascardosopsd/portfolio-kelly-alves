@@ -1,3 +1,5 @@
+import { PortableTextBlock } from "@portabletext/types";
+
 interface PicsProps {
   name: string;
   file: {
@@ -16,6 +18,6 @@ export interface ProfileProps {
   address: string;
   hours: string;
   motto: string;
-  bio: string;
+  bio: PortableTextBlock[] | string;
   pics: PicsProps[];
 }
