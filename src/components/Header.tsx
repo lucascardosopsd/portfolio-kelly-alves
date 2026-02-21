@@ -11,14 +11,16 @@ interface HeaderProps {
 }
 
 const Header = ({ profileData }: HeaderProps) => {
-  const [fixedHeader, setFixedHeader] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setFixedHeader(window.scrollY > 70);
+      const nextIsScrolled = window.scrollY > 70;
+      setIsScrolled((prev) => (prev === nextIsScrolled ? prev : nextIsScrolled));
     };
 
-    window.addEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -28,10 +30,10 @@ const Header = ({ profileData }: HeaderProps) => {
   return (
     <>
       <div
-        className={`hidden w-full items-center transition tablet:flex ${
-          fixedHeader
-            ? "fixed top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md"
-            : "static bg-transparent"
+        className={`sticky top-0 z-40 hidden w-full items-center tablet:flex transition-[background-color,backdrop-filter,border-color,box-shadow,transform,opacity] duration-300 ease-out motion-reduce:transition-none ${
+          isScrolled
+            ? "border-b border-border bg-background/80 shadow-custom backdrop-blur-md translate-y-0 opacity-100"
+            : "border-b border-transparent bg-transparent shadow-none translate-y-0 opacity-95"
         }`}
       >
         <header className="z-10 flex h-20 w-full items-center justify-between max-width">
