@@ -19,11 +19,11 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   openGraph: {
-    title: "Kelly Alves | Massoterapia e Estética",
+    title: "Kelly Cardoso | Massoterapia e Estética",
     description:
       "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
     url: "https://kellyalves.vercel.app/",
-    siteName: "Kelly Alves",
+    siteName: "Kelly Cardoso",
     images: [
       {
         url: "http://localhost:3000/images/open-graph.png",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: "http://localhost:3000/images/open-graph.png",
         width: 1800,
         height: 1600,
-        alt: "Kelly Alves",
+        alt: "Kelly Cardoso",
       },
     ],
     locale: "pt_BR",

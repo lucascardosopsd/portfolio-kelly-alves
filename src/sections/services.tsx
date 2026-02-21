@@ -28,16 +28,18 @@ type SelectedService = {
 
 const Services = ({ serviceCategoriesData, whatsappUrl }: ServicesProps) => {
   const ref = useRef(null);
-  const [selectedService, setSelectedService] = useState<SelectedService | null>(null);
+  const [selectedService, setSelectedService] =
+    useState<SelectedService | null>(null);
   watchInView({ ref, id: "services" });
 
   const allServices = useMemo(() => {
-    const flattened: ServiceGridItem[] = serviceCategoriesData.flatMap((category) =>
-      category.categoryServices.map((service) => ({
-        categoryName: category.categoryName,
-        categoryOrder: category.order,
-        service,
-      }))
+    const flattened: ServiceGridItem[] = serviceCategoriesData.flatMap(
+      (category) =>
+        category.categoryServices.map((service) => ({
+          categoryName: category.categoryName,
+          categoryOrder: category.order,
+          service,
+        })),
     );
 
     return flattened.sort((a, b) => {
@@ -59,7 +61,7 @@ const Services = ({ serviceCategoriesData, whatsappUrl }: ServicesProps) => {
         <SectionHeading
           badge="Procedimentos"
           title="Serviços e Procedimentos"
-          subtitle="Meus procedimentos são pensados para lhe trazer o melhor em massoterapia e abaixo estarei apresentando os nomes e as vantagens de cada um."
+          subtitle="Meus procedimentos são pensados para lhe trazer o melhor em estética e massoterapia e abaixo estarei apresentando os nomes e as vantagens de cada um."
         />
 
         <div className="grid w-full grid-cols-2 gap-3 tablet:grid-cols-3 tablet:gap-5">
@@ -75,7 +77,10 @@ const Services = ({ serviceCategoriesData, whatsappUrl }: ServicesProps) => {
           ))}
         </div>
 
-        <Button asChild className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">
+        <Button
+          asChild
+          className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90"
+        >
           <Link href={whatsappUrl}>Quero agendar pelo WhatsApp</Link>
         </Button>
 
