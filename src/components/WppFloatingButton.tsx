@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { PiWhatsappLogoThin } from "react-icons/pi";
 
-const WppFloatingButton = () => {
+interface WppFloatingButtonProps {
+  whatsappUrl: string;
+}
+
+const WppFloatingButton = ({ whatsappUrl }: WppFloatingButtonProps) => {
   return (
     <div className="fixed z-20 bottom-4 right-4 block tablet:hidden">
-      <Link href="https://wa.link/a5sb7n" className="relative">
+      <Link href={whatsappUrl} className="relative">
         <div className="flex items-center justify-center border border-primary bg-primary text-primary-foreground rounded-full h-16 w-16">
           <PiWhatsappLogoThin className="text-2xl" />
         </div>

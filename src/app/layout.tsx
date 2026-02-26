@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import WppFloatingButton from "@/components/WppFloatingButton";
 import { Toaster } from "@/components/ui/sonner";
+import { getProfile } from "@/services/getProfile";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -42,18 +43,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const profileData = await getProfile();
+
   return (
     <html lang="pt-BR" className="!scroll-smooth" suppressHydrationWarning>
       <body
         className={`${manrope.variable} ${playfair.variable} bg-surface-brand font-sans text-foreground antialiased`}
       >
         <ThemeProvider>
-          <WppFloatingButton />
+          <WppFloatingButton whatsappUrl={profileData[0].whatsappUrl} />
           {children}
           <Toaster richColors position="top-right" />
         </ThemeProvider>
