@@ -86,8 +86,15 @@ const Location = ({ workLocationData }: LocationProps) => {
               )}
             </div>
 
-            <Button asChild className="w-fit bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href={workLocationData.mapsLink} target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              className="w-fit bg-primary text-primary-foreground hover:bg-primary/90 w-full"
+            >
+              <Link
+                href={workLocationData.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Como chegar
               </Link>
             </Button>
