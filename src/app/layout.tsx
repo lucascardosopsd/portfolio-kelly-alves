@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import WppFloatingButton from "@/components/WppFloatingButton";
 import { Toaster } from "@/components/ui/sonner";
 import MetaConversionsTracker from "@/components/analytics/MetaConversionsTracker";
+import CookieConsentBanner from "@/components/analytics/CookieConsentBanner";
 import { getProfile } from "@/services/getProfile";
 
 const manrope = Manrope({
@@ -61,6 +62,7 @@ export default async function RootLayout({
       >
         <ThemeProvider>
           <MetaConversionsTracker enabled={isMetaConversionsEnabled} />
+          <CookieConsentBanner />
           <WppFloatingButton whatsappUrl={profileData[0].whatsappUrl} />
           {children}
           <Toaster richColors position="top-right" />

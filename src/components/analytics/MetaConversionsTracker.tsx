@@ -1,6 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  COOKIE_CONSENT_EVENT,
+  readCookieConsent,
+} from "@/components/analytics/cookieConsent";
 
 type MetaConversionsTrackerProps = {
   enabled: boolean;
@@ -69,8 +73,24 @@ function sendConversionEvent(payload: ConversionEventPayload): void {
 }
 
 const MetaConversionsTracker = ({ enabled }: MetaConversionsTrackerProps) => {
+  const [hasConsent, setHasConsent] = useState(false);
+
   useEffect(() => {
-    if (!enabled) {
+    setHasConsent(readCookieConsent() === "accepted");
+
+    const handleConsentUpdate = () => {
+      setHasConsent(readCookieConsent() === "accepted");
+    };
+
+    window.addEventListener(COOKIE_CONSENT_EVENT, handleConsentUpdate);
+
+    return () => {
+      window.removeEventListener(COOKIE_CONSENT_EVENT, handleConsentUpdate);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enabled || !hasConsent) {
       return;
     }
 
@@ -83,10 +103,10 @@ const MetaConversionsTracker = ({ enabled }: MetaConversionsTrackerProps) => {
         fbc: getCookieValue("_fbc"),
       },
     });
-  }, [enabled]);
+  }, [enabled, hasConsent]);
 
   useEffect(() => {
-    if (!enabled) {
+    if (!enabled || !hasConsent) {
       return;
     }
 
@@ -124,7 +144,7 @@ const MetaConversionsTracker = ({ enabled }: MetaConversionsTrackerProps) => {
     return () => {
       document.removeEventListener("click", handleClick, { capture: true });
     };
-  }, [enabled]);
+  }, [enabled, hasConsent]);
 
   return null;
 };

@@ -29,6 +29,8 @@ Com isso ativo, o projeto envia:
 - `PageView` no carregamento da página
 - `Lead` no clique em links do WhatsApp
 
+Os eventos so sao enviados apos aceite no banner de cookies.
+
 ---
 
 ⌨️ com ❤️ por [Lucas Cardoso](https://lucascardoso.vercel.app/) 😊
