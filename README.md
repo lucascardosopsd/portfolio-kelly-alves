@@ -14,6 +14,21 @@ https://kellyalves.vercel.app/
 - [React Icons](https://react-icons.github.io/react-icons/) - Biblioteca de Icones
 - [Sanity](https://www.sanity.io/) - CMS
 
+## Meta Conversions API
+
+Para habilitar o envio de eventos server-side para a Meta, configure as variáveis abaixo no `.env`:
+
+```bash
+META_PIXEL_ID=SEU_PIXEL_ID
+META_ACCESS_TOKEN=SEU_ACCESS_TOKEN
+# opcional (padrão: v21.0)
+META_API_VERSION=v21.0
+```
+
+Com isso ativo, o projeto envia:
+- `PageView` no carregamento da página
+- `Lead` no clique em links do WhatsApp
+
 ---
 
 ⌨️ com ❤️ por [Lucas Cardoso](https://lucascardoso.vercel.app/) 😊
