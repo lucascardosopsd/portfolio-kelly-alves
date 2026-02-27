@@ -16,6 +16,10 @@ export const navLinks = [
     url: "#bio",
   },
   {
+    label: "Localização",
+    url: "#location",
+  },
+  {
     label: "Avaliações",
     url: "#ratings",
   },

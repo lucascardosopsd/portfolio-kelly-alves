@@ -4,7 +4,8 @@ import hero from "./schemas/hero";
 import services from "./schemas/services";
 import results from "./schemas/results";
 import ratings from "./schemas/ratings";
+import workLocation from "./schemas/workLocation";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [profile, hero, services, results, ratings],
+  types: [profile, hero, services, results, ratings, workLocation],
 };

@@ -9,6 +9,8 @@ import Results from "@/sections/Results";
 import { getRatings } from "@/services/getRatings";
 import Ratings from "@/sections/ratings";
 import SectionBand from "@/components/home/SectionBand";
+import { getWorkLocation } from "@/services/getWorkLocation";
+import Location from "@/sections/Location";
 
 export default async function Home() {
   const heroData = await getHero();
@@ -18,6 +20,7 @@ export default async function Home() {
   );
   const resultsData = await getResults();
   const ratingsData = await getRatings();
+  const workLocationData = await getWorkLocation();
 
   return (
     <>
@@ -39,6 +42,12 @@ export default async function Home() {
       <SectionBand tone="white">
         <Bio profileData={profileData[0]} />
       </SectionBand>
+
+      {workLocationData[0] ? (
+        <SectionBand tone="white">
+          <Location workLocationData={workLocationData[0]} />
+        </SectionBand>
+      ) : null}
 
       <SectionBand tone="white">
         <Ratings ratingsData={ratingsData} />
