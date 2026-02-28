@@ -7,7 +7,7 @@ interface WppFloatingButtonProps {
 
 const WppFloatingButton = ({ whatsappUrl }: WppFloatingButtonProps) => {
   return (
-    <div className="fixed z-20 bottom-4 right-4 block tablet:hidden">
+    <div className="fixed right-4 top-1/2 z-[60] block -translate-y-1/2 tablet:hidden">
       <Link href={whatsappUrl} className="relative">
         <div className="flex items-center justify-center border border-primary bg-primary text-primary-foreground rounded-full h-16 w-16">
           <PiWhatsappLogoThin className="text-2xl" />
