@@ -21,6 +21,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kellyalves.vercel.app"),
+  title: "Kelly Cardoso | Massoterapia e Estética",
+  description:
+    "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
   openGraph: {
     title: "Kelly Cardoso | Massoterapia e Estética",
     description:
@@ -29,19 +33,21 @@ export const metadata: Metadata = {
     siteName: "Kelly Cardoso",
     images: [
       {
-        url: "http://localhost:3000/images/open-graph.png",
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "http://localhost:3000/images/open-graph.png",
-        width: 1800,
-        height: 1600,
+        url: "/images/opengraph-preview.png",
+        width: 1200,
+        height: 630,
         alt: "Kelly Cardoso",
       },
     ],
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kelly Cardoso | Massoterapia e Estética",
+    description:
+      "Minha paixão está na arte de proporcionar relaxamento e alívio, e meu trabalho abrange desde massagens relaxantes até tratamentos para dores específicas e métodos na área de emagrecimento.",
+    images: ["/images/opengraph-preview.png"],
   },
 };
 
