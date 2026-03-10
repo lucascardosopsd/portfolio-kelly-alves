@@ -16,7 +16,7 @@ export default async function Home() {
   const heroData = await getHero();
   const profileData = await getProfile();
   const serviceCategoriesData = (await getServices()).sort(
-    (a, b) => a.order - b.order
+    (a, b) => a.order - b.order,
   );
   const resultsData = await getResults();
   const ratingsData = await getRatings();
@@ -29,6 +29,10 @@ export default async function Home() {
       </SectionBand>
 
       <SectionBand tone="white">
+        <Results resultsData={resultsData} />
+      </SectionBand>
+
+      <SectionBand tone="brand">
         <Services
           serviceCategoriesData={serviceCategoriesData}
           whatsappUrl={profileData[0].whatsappUrl}
@@ -36,15 +40,11 @@ export default async function Home() {
       </SectionBand>
 
       <SectionBand tone="white">
-        <Results resultsData={resultsData} />
-      </SectionBand>
-
-      <SectionBand tone="white">
         <Bio profileData={profileData[0]} />
       </SectionBand>
 
       {workLocationData[0] ? (
-        <SectionBand tone="white">
+        <SectionBand tone="brand">
           <Location workLocationData={workLocationData[0]} />
         </SectionBand>
       ) : null}
